@@ -14,7 +14,7 @@ export default function Home() {
             </div>
           </Link>
 
-          <div className="space-y-8 mt-16 md:mt-24 lg:mt-40">
+          <div className="space-y-8 mt-16 xl:mt-40">
             <div className="font-bold text-4xl space-y-2 ">
               <h2>Welcome to</h2>
               <h2>BETTERSVCE!</h2>
@@ -27,17 +27,19 @@ export default function Home() {
             </div>
 
             <div className="space-y-3 flex flex-col ">
-              <Button className="" variant="outline" size="lg">
-                Login
+              <Button className="" variant="outline" size="lg" asChild>
+                <Link href="/sign-in">Login</Link>
               </Button>
-              <Button size="lg">Create an account</Button>
+              <Button size="lg" asChild>
+                <Link href="/sign-up">Create an account</Link>
+              </Button>
             </div>
           </div>
         </div>
 
         {/* Image */}
-        <div>
-          <div className="hidden md:flex relative h-[90dvh] md:w-[440px] lg:w-[600px] xl:w-[700px]">
+        <div className="ml-auto">
+          <div className="hidden md:flex relative h-[90dvh] md:w-[440px] lg:w-[600px] ">
             <Image alt="Splash" src="/person_with_notebook.svg" fill />
           </div>
         </div>
