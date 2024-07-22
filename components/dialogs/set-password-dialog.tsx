@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
-  DialogTitle,
 } from "../ui/dialog";
-import { Button } from "../ui/button";
 import Image from "next/image";
 
 interface SetPasswordDialogProps {

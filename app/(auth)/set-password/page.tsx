@@ -20,9 +20,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Eye, EyeOff, Info } from "lucide-react";
 import SetPasswordDialog from "@/components/dialogs/set-password-dialog";
+import ErrorDialog from "@/components/dialogs/error-dialog";
 
 const ResetPasswordPage = () => {
   const router = useRouter();
@@ -32,6 +33,8 @@ const ResetPasswordPage = () => {
     confirmPassword: false,
   });
   const [successModal, setSuccessModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -92,6 +95,7 @@ const ResetPasswordPage = () => {
 
             <Form {...form}>
               <form
+                ref={formRef}
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-3 w-full "
               >
@@ -200,6 +204,15 @@ const ResetPasswordPage = () => {
         isOpen={successModal}
         onClose={() => {
           setSuccessModal(!successModal);
+        }}
+      />
+
+      <ErrorDialog
+        isOpen={errorModal}
+        onClose={() => setErrorModal(!errorModal)}
+        reloadHandler={() => {
+          // formRef.current?.reset();
+          setErrorModal(!errorModal);
         }}
       />
     </>
