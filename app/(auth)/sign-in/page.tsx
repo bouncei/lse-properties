@@ -66,7 +66,7 @@ const SignInPage = () => {
           </div>
         </Link>
 
-        <div className="space-y-5 md:space-y-8 mt-4 xl:mt-28 w-full">
+        <div className="space-y-5 md:space-y-8 mt-4  xl:mt-16 w-full">
           <div className="font-bold text-4xl space-y-2 ">
             <h2>Sign in to your Account</h2>
           </div>

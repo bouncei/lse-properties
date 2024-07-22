@@ -22,24 +22,20 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Eye, EyeOff, Info } from "lucide-react";
-import RegisterDialog from "@/components/dialogs/register-dialog";
+import SetPasswordDialog from "@/components/dialogs/set-password-dialog";
 
-const SignUpPage = () => {
+const ResetPasswordPage = () => {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
-
   const [successModal, setSuccessModal] = useState(false);
-  const [registerdEmail, setRegisteredEmail] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: "",
-      email: "",
       password: "",
       confirmPassword: "",
     },
@@ -62,7 +58,6 @@ const SignUpPage = () => {
     try {
       // TODO: on submit functionality
       setSuccessModal(true);
-      setRegisteredEmail(values.email);
       console.log("Form values", values);
 
       // form.reset();
@@ -78,21 +73,21 @@ const SignUpPage = () => {
   return (
     <>
       <div className="flex flex-1 md:gap-5 lg:gap-10 items-center">
-        <div className="flex  flex-col h-full  items-start w-full">
+        <div className="flex  flex-col h-full items-start w-full">
           <Link href="/" className="flex items-center">
             <div className="relative size-28 md:size-32 mr-2 md:mr-4">
               <Image fill alt="logo" src="/logo.svg" />
             </div>
           </Link>
 
-          <div className="space-y-3 lg:space-y-5 mt-3  w-full">
+          <div className="space-y-5 md:space-y-8 mt-4  xl:mt-16 w-full">
             <div className="font-bold text-4xl space-y-2 ">
-              <h2>Create a New Account</h2>
+              <h2>Set your New Password</h2>
             </div>
 
             <div>
-              Personalized the opportunities Join our community to connect,
-              create, and grow.
+              Enter a new password for your Bettersvce account. Make sure it’s
+              strong and secure.
             </div>
 
             <Form {...form}>
@@ -101,46 +96,6 @@ const SignUpPage = () => {
                 className="space-y-3 w-full "
               >
                 {/* INPUT FIELDS */}
-                <FormField
-                  control={form.control}
-                  name="fullName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Full Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={isLoading}
-                          placeholder="John Doe"
-                          className="focus-visible:ring-0"
-                          {...field}
-                        />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email Address</FormLabel>
-                      <FormControl>
-                        <Input
-                          disabled={isLoading}
-                          placeholder="john.doe@gmail.com"
-                          className="focus-visible:ring-0"
-                          {...field}
-                        />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
                 <FormField
                   control={form.control}
                   name="password"
@@ -152,7 +107,7 @@ const SignUpPage = () => {
                           <Input
                             disabled={isLoading}
                             type={showPassword.password ? "text" : "password"}
-                            placeholder="Enter password"
+                            placeholder="Enter new password"
                             className="focus-visible:ring-0"
                             {...field}
                           />
@@ -186,7 +141,7 @@ const SignUpPage = () => {
                             type={
                               showPassword.confirmPassword ? "text" : "password"
                             }
-                            placeholder="Re-Enter password"
+                            placeholder="Re-Enter new password"
                             className="focus-visible:ring-0"
                             {...field}
                           />
@@ -207,72 +162,41 @@ const SignUpPage = () => {
                   )}
                 />
 
-                <div className="w-full py-2 text-left text-sm ">
-                  {/* <FormLabel>Terms and Conditions</FormLabel> */}
-                  <div className="flex items-center">
-                    <Input
-                      type="checkbox"
-                      className="w-4 h-4 text-[#117C35]  rounded border-gray
-                  border focus:ring-[#117C35]  "
-                    />
-                    <span className="ml-2">
-                      I agree to the{" "}
-                      <span className=" underline ease-in hover:opacity-70 text-[#117C35] cursor-pointer hover:scale-105 transition">
-                        <Link href="/terms-and-conditions">
-                          Terms and Conditions
-                        </Link>
-                      </span>{" "}
-                      and{" "}
-                      <span className=" underline ease-in hover:opacity-70 text-[#117C35] cursor-pointer hover:scale-105 transition">
-                        <Link href="/privacy-policy">Privacy Policy.</Link>
-                      </span>
-                    </span>
-                  </div>
-
-                  {/* <div>
-                 
-                </div> */}
-                </div>
-
                 <Button
                   size="lg"
                   type="submit"
                   className="w-full !mt-8"
                   disabled={isLoading}
                 >
-                  Sign up
+                  Save New Password
                 </Button>
               </form>
             </Form>
           </div>
 
-          <div className="w-full text-center py-3 text-sm ">
-            Already have an account?{" "}
-            <span className=" underline ease-in hover:opacity-70 text-[#117C35] cursor-pointer hover:scale-105 transition">
-              <Link href="/sign-in">Sign in here.</Link>
-            </span>
-          </div>
-
-          <div className="py-3 flex items-center gap-2 text-sm text-[#117C35] ">
+          <div className="py-4 lg:py-8 flex items-center gap-2 text-sm text-[#117C35] ">
             <Info className=" flex-shrink-0 size-6" />
 
             <div>
-              Your information is safe with us. We respect your privacy and will
-              never share your details without your consent.
+              Once you save your new password, you will be redirected to the
+              login page. If you encounter any issues, please contact our{" "}
+              <b className=" underline cursor-pointer transition ease-in hover:opacity-70">
+                support team
+              </b>{" "}
+              for assistance.
             </div>
           </div>
         </div>
 
         {/* Image */}
         <div className="ml-auto">
-          <div className="hidden md:flex relative h-[90dvh] md:w-[440px] lg:w-[600px]">
-            <Image alt="login" src="/register.svg" fill />
+          <div className="hidden md:flex relative h-[90dvh] md:w-[440px] lg:w-[600px] ">
+            <Image alt="login" src="/set_password.svg" fill />
           </div>
         </div>
       </div>
 
-      <RegisterDialog
-        email={registerdEmail}
+      <SetPasswordDialog
         isOpen={successModal}
         onClose={() => {
           setSuccessModal(!successModal);
@@ -282,4 +206,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default ResetPasswordPage;

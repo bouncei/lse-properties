@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="md:h-screen md:overflow-hidden flex flex-col mx-4 md:mx-8">
+    <div className="md:h-screen  flex flex-col mx-4 md:mx-8">
       <div className="flex flex-1 md:gap-5 lg:gap-10 items-center">
-        <div className="flex  flex-col h-full items-start">
+        <div className="flex text-sm h-full flex-col items-start">
           <Link href="/" className="flex items-center">
             <div className="relative size-28 md:size-32 mr-2 md:mr-4">
               <Image fill alt="logo" src="/logo.svg" />
@@ -39,7 +39,7 @@ export default function Home() {
 
         {/* Image */}
         <div className="ml-auto">
-          <div className="hidden md:flex relative h-[90dvh] md:w-[440px] lg:w-[600px] ">
+          <div className="hidden md:flex relative h-[90dvh]  md:w-[440px] lg:w-[600px] ">
             <Image alt="Splash" src="/person_with_notebook.svg" fill />
           </div>
         </div>
