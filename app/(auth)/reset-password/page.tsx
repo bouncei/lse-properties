@@ -131,8 +131,8 @@ const ResetPasswordPage = () => {
           <Info className=" flex-shrink-0 size-6" />
 
           <div>
-            If you don't receive the email within a few minutes, check your spam
-            folder or contact our{" "}
+            If you don&apos;t receive the email within a few minutes, check your
+            spam folder or contact our{" "}
             <b className=" underline cursor-pointer transition ease-in hover:opacity-70">
               support team
             </b>{" "}

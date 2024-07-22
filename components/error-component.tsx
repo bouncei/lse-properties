@@ -32,7 +32,7 @@ const ErrorComponent = () => {
 
                 <div>
                   Oops! Looks like our connection got lost. Sorry, it looks like
-                  you're off the grid.{" "}
+                  you&apos;re off the grid.{" "}
                 </div>
               </div>
               <Button
