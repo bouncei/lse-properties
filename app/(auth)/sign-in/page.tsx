@@ -149,7 +149,7 @@ const SignInPage = () => {
         </div>
 
         <div className="w-full text-center py-4 text-sm ">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <span className=" underline ease-in hover:opacity-70 text-[#117C35] cursor-pointer hover:scale-105 transition">
             <Link href="/sign-up">Create Account here.</Link>
           </span>

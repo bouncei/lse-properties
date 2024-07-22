@@ -34,7 +34,7 @@ const RegisterDialog = ({ email, isOpen, onClose }: RegisterDialogProps) => {
         </DialogHeader>
         <DialogFooter>
           <p className=" text-muted-foreground text-xs text-center w-full">
-            Didn't receive the email? Check your spam/junk folder{" "}
+            Didn&apos;t receive the email? Check your spam/junk folder{" "}
           </p>
         </DialogFooter>
       </DialogContent>
