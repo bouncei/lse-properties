@@ -8,27 +8,32 @@ import Logo from "./logo";
 import { landingPageRoutes } from "@/constants";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
 
 const LandingNav = () => {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-0 bg-transparent  flex items-center justify-between  z-20">
+    <div className="sticky top-0  bg-transparent  flex items-center justify-between  z-20">
       <Logo />
-      <div className="flex space-x-5 items-center">
+      <div className="hidden lg:flex  items-center">
         {landingPageRoutes.map((route) => (
           <Button
             asChild
+            size="lg"
             variant="navlink"
             key={route.href}
-            className={cn("text-black", pathname === "/" && "text-[#DADFE3]")}
+            className={cn(
+              "text-black",
+              pathname === "/" && "text-[#DADFE3] hover:text-white"
+            )}
           >
             <Link href={route.href}>{route.label}</Link>
           </Button>
         ))}
       </div>
 
-      <div className="flex items-center gap-x-1 md:gap-x-2">
+      <div className="hidden lg:flex items-center gap-x-1 md:gap-x-2">
         <Button
           variant="ghost"
           size="lg"
@@ -45,6 +50,15 @@ const LandingNav = () => {
           <Link href="/get-started">Get Started</Link>
         </Button>
       </div>
+
+      {/* Hanburger menu */}
+      <Button
+        className=" lg:hidden hover:bg-[#7d7e7e] "
+        variant="ghost"
+        size="icon"
+      >
+        <Menu className="size-6" color="#fff" />
+      </Button>
     </div>
   );
 };

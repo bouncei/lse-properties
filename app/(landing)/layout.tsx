@@ -14,7 +14,7 @@ const LandingLayout = ({ children }: { children: React.ReactNode }) => {
       <div
         className={cn(
           "mx-auto h-full  ",
-          pathname !== "/" && "max-w-screen-2xl px-4 md:px-6 xl:px-16  "
+          pathname !== "/" && " px-4 md:px-6 xl:px-16    "
         )}
       >
         {pathname !== "/" && <LandingNav />}

@@ -58,3 +58,16 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+.landing-hero-container {
+  background-image: url("/hero_mobile_section.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (min-width: 1024px) {
+  .landing-hero-container {
+    background-image: url("/hero_section.webp");
+  }
+}
