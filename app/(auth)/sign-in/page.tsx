@@ -22,10 +22,10 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Eye, EyeOff, Info } from "lucide-react";
+import Logo from "@/components/logo";
 
 const SignInPage = () => {
   const router = useRouter();
-
   const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -60,12 +60,7 @@ const SignInPage = () => {
   return (
     <div className="flex flex-1 md:gap-5 lg:gap-10 items-center">
       <div className="flex  flex-col h-full items-start w-full">
-        <Link href="/" className="flex items-center">
-          <div className="relative size-28 md:size-32 mr-2 md:mr-4">
-            <Image fill alt="logo" src="/logo.svg" />
-          </div>
-        </Link>
-
+        <Logo />
         <div className="space-y-5 md:space-y-8 mt-4  xl:mt-16 w-full">
           <div className="font-bold text-4xl space-y-2 ">
             <h2>Sign in to your Account</h2>

@@ -1,29 +1,28 @@
 "use client";
 
+import { useRef, useState } from "react";
+import { Info } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import { formSchema } from "./constant";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
-import { useRef, useState } from "react";
-import { Eye, EyeOff, Info } from "lucide-react";
 import SetPasswordDialog from "@/components/dialogs/set-password-dialog";
 import ErrorDialog from "@/components/dialogs/error-dialog";
+import Logo from "@/components/logo";
 
 const ResetPasswordPage = () => {
   const router = useRouter();
@@ -77,11 +76,7 @@ const ResetPasswordPage = () => {
     <>
       <div className="flex flex-1 md:gap-5 lg:gap-10 items-center">
         <div className="flex  flex-col h-full items-start w-full">
-          <Link href="/" className="flex items-center">
-            <div className="relative size-28 md:size-32 mr-2 md:mr-4">
-              <Image fill alt="logo" src="/logo.svg" />
-            </div>
-          </Link>
+          <Logo />
 
           <div className="space-y-5 md:space-y-8 mt-4  xl:mt-16 w-full">
             <div className="font-bold text-4xl space-y-2 ">

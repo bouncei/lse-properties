@@ -1,6 +1,6 @@
-import { LayoutDashboard, LogOut, MessageCircleQuestion, Settings, ThumbsUp, FileLineChart, MessageSquareMore, FileSpreadsheet, CreditCard, Briefcase, Archive } from "lucide-react"
+import { LayoutDashboard, LogOut, MessageCircleQuestion, Settings, ThumbsUp, FileLineChart, MessageSquareMore, FileSpreadsheet, CreditCard, Briefcase, Archive, House, CircleHelp, HandCoins, Info, Headset } from "lucide-react"
 
-export const routes = [{
+export const dashboardRoutes = [{
     section1: [
         {
             icon: LayoutDashboard,
@@ -54,4 +54,31 @@ export const routes = [{
         }
     ]
 }
-] 
+]
+
+
+export const landingPageRoutes = [
+    {
+        icon: House,
+        label: "Home",
+        href: "/",
+    },
+    {
+        icon: CircleHelp,
+        label: "How it works",
+        href: "/how-it-works",
+    }, {
+        icon: HandCoins,
+        label: "Services",
+        href: "/services",
+    }, {
+        icon: Info,
+        label: "About Us",
+        href: "/about-us",
+    },
+    {
+        icon: Headset,
+        label: "Contact",
+        href: "/contact",
+    },
+]

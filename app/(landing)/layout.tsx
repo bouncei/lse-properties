@@ -1,11 +1,26 @@
+"use client";
+
+import Footer from "@/components/footer";
+import LandingNav from "@/components/landing-nav";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const LandingLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <main className="h-full overflow-auto">
-      <div className="mx-auto max-w-screen-xl h-full">{children}</div>
+  const pathname = usePathname();
 
-      <div className=" "></div>
+  return (
+    <main className="h-full overflow-auto ">
+      <div
+        className={cn(
+          "mx-auto h-full  ",
+          pathname !== "/" && "max-w-screen-2xl px-4 md:px-6 xl:px-16  "
+        )}
+      >
+        {pathname !== "/" && <LandingNav />}
+        {children}
+        <Footer />
+      </div>
     </main>
   );
 };
