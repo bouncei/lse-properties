@@ -6,14 +6,40 @@ const LandingHero = () => {
     <div className=" flex items-center justify-center  text-white">
       {/* Optional overlay for better text visibility */}
       <div className="absolute inset-0 bg-black opacity-0 lg:opacity-20"></div>{" "}
-      <div className="h-[70dvh] sm:h-[60dvh] lg:h-[80dvh] w-full flex flex-col lg:flex-row lg:items-center gap-y-14 md:gap-y-16 lg:gap-y-0 lg:justify-center ">
+      <div className="h-[70dvh] sm:h-[60dvh] lg:h-[70dvh] w-full flex flex-col lg:flex-row lg:items-center gap-y-14 md:gap-y-16 lg:gap-y-0 lg:justify-center ">
         <div className="relative z-10 w-full lg:w-[50%] ">
           <div className="w-full text-left space-y-4 sm:space-y-8 py-8">
-            <h1 className="text-4xl lg:text-6xl font-bold">
+            <div className="text-4xl lg:text-5xl xl:text-6xl font-bold relative">
               Connecting <span className="text-yellow-400">Services</span>
               <br />
-              with Those Who <span className="text-red-500">Need Them!</span>
-            </h1>
+              with Those Who <br className="hidden lg:block" />{" "}
+              <span className="text-red-500">Need </span> Them!
+              <div className=" z-20 absolute bottom-2 -left-3 ">
+                <div className="relative size-32 lg:size-44 ">
+                  <Image alt="square_float" src="/hero_square_float.svg" fill />
+                </div>
+              </div>
+              <div className="hidden xl:block">
+                <div className=" z-20 absolute -top-3 right-0 ">
+                  <div className="relative size-10 lg:size-20 ">
+                    <Image
+                      alt="square_float"
+                      src="/hero_circle_float.svg"
+                      fill
+                    />
+                  </div>
+                </div>
+                <div className=" z-20 absolute -top-8 -right-5 ">
+                  <div className="relative lg:size-20 ">
+                    <Image
+                      alt="square_float"
+                      src="/hero_circle_float.svg"
+                      fill
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
             <p className=" text-sm sm:text-base lg::max-w-2xl mr-auto">
               Connect with skilled professionals or offer your own expertise
               with ease. Our platform bridges the gap between service providers

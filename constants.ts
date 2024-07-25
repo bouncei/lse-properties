@@ -157,3 +157,20 @@ export const landingPageTalents = [
     { title: "Counselor", talentsCount: 2345, imageUrl: "/path-to-counselor-image.jpg", tag: "brand" },
     { title: "Social Media Manager", talentsCount: 2345, imageUrl: "/path-to-social-media-manager-image.jpg", tag: "development" },
 ];
+
+
+export const landingPageHowItWorks = [{
+    iconPath: "/icons/globe.svg",
+    title: "Download our App/Website URL",
+    text: "Get started by downloading our app or visiting our website. It's quick and easy to access our platform and explore all the services we offer.",
+},
+{
+    iconPath: "/icons/user.svg",
+    title: "Setup your Account",
+    text: "Sign up and create your profile. Personalize your account to enhance your experience and make it easier to find or offer services.",
+},
+{
+    iconPath: "/icons/reload.svg",
+    title: "Start enjoying our Features",
+    text: "Browse through various services, connect with professionals or clients, and manage your transactions securely..",
+},]

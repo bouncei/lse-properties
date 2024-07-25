@@ -4,6 +4,7 @@ import { useMountedState } from "react-use";
 import Image from "next/image";
 
 import {
+  landingPageHowItWorks,
   landingPageServices,
   landingPageSponsors,
   landingPageTalentCategories,
@@ -12,7 +13,7 @@ import {
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardDescription, CardHeader } from "./ui/card";
+import { Card, CardHeader } from "./ui/card";
 
 const LandingContent = () => {
   const isMounted = useMountedState();
@@ -52,7 +53,7 @@ const LandingContent = () => {
       {/* SERVICES */}
       <div className="px-4 md:px-10 xl:px-16 py-4 bg-muted md:py-10 xl:py-16">
         <div className="flex items-center flex-col justify-center">
-          <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-lg md:text-2xl font-medium">
+          <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
             Core Serivices For You
           </div>
 
@@ -60,7 +61,7 @@ const LandingContent = () => {
             {landingPageServices.map((service, index) => (
               <div
                 key={index}
-                className="flex flex-col items-start justify-center gap-3 rounded-lg bg-black px-8 py-14
+                className="flex flex-col items-start justify-center gap-3 rounded-lg bg-background px-8 py-14
                 shadow-md shadow-primary/10 hover:shadow-primary/20 transition ease-in"
                 style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1537016549486-1ac154c28ccf?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
@@ -83,7 +84,7 @@ const LandingContent = () => {
       {/* TALENTS */}
       <div className="px-4 md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
         <div className="space-y-4">
-          <div className="b-3 md:pb-8  xl:pb-14 text-lg md:text-2xl font-medium">
+          <div className="b-3 md:pb-8  xl:pb-14 text-xl md:text-3xl font-medium">
             Browse through our <span className="text-[#663AC9]">talent</span>{" "}
             categories
           </div>
@@ -147,6 +148,38 @@ const LandingContent = () => {
           </Tabs>
         </div>
       </div>
+
+      {/* HOW IT WORKS */}
+      <div className="bg-muted px-4 md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+        <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
+          How Does FIIXCONN Works?
+        </div>
+
+        <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {landingPageHowItWorks.map((item) => (
+            <div
+              key={item.iconPath}
+              className="flex flex-col items-center text-center justify-center gap-3 rounded-lg  px-8 py-14 hover:shadow-primary/20 hover:bg-background hover:scale-105 transition ease-in"
+            >
+              <div className="size-10 xl:size-12 relative">
+                <Image alt="service" src={item.iconPath} fill />
+              </div>
+              <div className=" font-medium">{item.title}</div>
+              <div className="">{item.text}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* FOR CLIENTS */}
+      <div></div>
+
+      {/* style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1537016549486-1ac154c28ccf?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }} */}
     </div>
   );
 };
