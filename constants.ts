@@ -82,3 +82,78 @@ export const landingPageRoutes = [
         href: "/contact",
     },
 ]
+
+
+export const landingPageSponsors = [
+    {
+        imgPath: "/sponsors/google.svg",
+    },
+    {
+        imgPath: "/sponsors/amazon.svg",
+    },
+    {
+        imgPath: "/sponsors/airbnb.svg",
+    },
+    {
+        imgPath: "/sponsors/spotify.svg",
+    },
+    {
+        imgPath: "/sponsors/intrax.svg",
+    },
+    {
+        imgPath: "/sponsors/noxis.svg",
+    },
+];
+
+export const landingPageServices = [
+    {
+        imgPath: "/icons/scope.svg",
+        title: "Local Focus",
+        text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
+    },
+    {
+        imgPath: "/icons/lock.svg",
+        title: "Local Focus",
+        text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
+    },
+    {
+        imgPath: "/icons/verify.svg",
+        title: "Local Focus",
+        text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
+    },
+    {
+        imgPath: "/icons/users.svg",
+        title: "Local Focus",
+        text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
+    },
+    {
+        imgPath: "/icons/search.svg",
+        title: "Local Focus",
+        text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
+    },
+    {
+        imgPath: "/icons/support.svg",
+
+        title: "Local Focus",
+        text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
+    },
+];
+
+
+export const landingPageTalentCategories = [
+    "All",
+    "Development",
+    "Design",
+    "Branding"
+]
+
+export const landingPageTalents = [
+    { title: "Design", talentsCount: 2345, imageUrl: "/path-to-design-image.jpg", tag: "design" },
+    { title: "Web Development", talentsCount: 2345, imageUrl: "/path-to-webdev-image.jpg", tag: "development" },
+    { title: "Content Strategy", talentsCount: 2345, imageUrl: "/path-to-content-strategy-image.jpg", tag: "branding" },
+    { title: "Web Development", talentsCount: 2345, imageUrl: "/path-to-webdev-image.jpg", tag: "development" },
+    { title: "Plumber", talentsCount: 2345, imageUrl: "/path-to-plumber-image.jpg", tag: "branding" },
+    { title: "Web Development", talentsCount: 2345, imageUrl: "/path-to-webdev-image.jpg", tag: "development" },
+    { title: "Counselor", talentsCount: 2345, imageUrl: "/path-to-counselor-image.jpg", tag: "brand" },
+    { title: "Social Media Manager", talentsCount: 2345, imageUrl: "/path-to-social-media-manager-image.jpg", tag: "development" },
+];

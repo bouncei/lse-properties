@@ -14,12 +14,12 @@ const LandingLayout = ({ children }: { children: React.ReactNode }) => {
       <div
         className={cn(
           "mx-auto h-full  ",
-          pathname !== "/" && " px-4 md:px-6 xl:px-16    "
+          pathname !== "/" && " px-4 md:px-10 xl:px-16    "
         )}
       >
         {pathname !== "/" && <LandingNav />}
         {children}
-        <Footer />
+        {pathname !== "/" && <Footer />}
       </div>
     </main>
   );
