@@ -92,7 +92,7 @@ const LandingContent = () => {
             <div className="flex flex-col md:flex-row items-start md:items-center pb-2 space-y-3 md:space-y-0  justify-between">
               <TabsList className="grid w-full md:w-auto grid-cols-4 gap-3 md:gap-5">
                 {landingPageTalentCategories.map((category) => (
-                  <TabsTrigger value={category.toLowerCase()}>
+                  <TabsTrigger key={category} value={category.toLowerCase()}>
                     {category}
                   </TabsTrigger>
                 ))}
