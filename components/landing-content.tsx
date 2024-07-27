@@ -15,7 +15,6 @@ import {
 } from "@/constants";
 import { Button } from "./ui/button";
 import {
-  ArrowLeft,
   ArrowRight,
   MoveLeft,
   MoveRight,
@@ -26,7 +25,6 @@ import { Card, CardHeader } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import Footer from "./footer";
 
 const LandingContent = () => {
   const isMounted = useMountedState();
@@ -301,7 +299,7 @@ const LandingContent = () => {
         <div className="absolute inset-0 bg-black opacity-80"></div>
         <div className="flex flex-col md:flex-row z-10 gap-8 items-center md:items-start lg:items-center justify-between">
           <div className="w-full md:w-[35%] space-y-5  lg:space-y-8">
-            <Badge className="bg-background text-primary uppercase p-2">
+            <Badge className="bg-[#FCE7E5] text-red-500 uppercase p-2">
               🛠️ For Service Provider
             </Badge>
 
@@ -395,7 +393,7 @@ const LandingContent = () => {
               <div className="flex flex-col items-center gap-y-2">
                 <div className="flex items-center gap-x-2">
                   {landingPageUserReviews.map((review) => (
-                    <Avatar>
+                    <Avatar key={review.image}>
                       <AvatarImage
                         src={review.image}
                         alt="avatar"
