@@ -19,7 +19,7 @@ const LandingLayout = ({ children }: { children: React.ReactNode }) => {
       >
         {pathname !== "/" && <LandingNav />}
         {children}
-        {pathname !== "/" && <Footer />}
+        {/* {pathname !== "/" && <Footer />} */}
       </div>
     </main>
   );

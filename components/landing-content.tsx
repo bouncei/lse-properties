@@ -4,16 +4,29 @@ import { useMountedState } from "react-use";
 import Image from "next/image";
 
 import {
+  landingPageClientsGuide,
   landingPageHowItWorks,
+  landingPageSeriveProvidersGuide,
   landingPageServices,
   landingPageSponsors,
   landingPageTalentCategories,
   landingPageTalents,
+  landingPageUserReviews,
 } from "@/constants";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  MoveLeft,
+  MoveRight,
+  SquareArrowOutUpRight,
+} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardHeader } from "./ui/card";
+import { Badge } from "./ui/badge";
+import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import Footer from "./footer";
 
 const LandingContent = () => {
   const isMounted = useMountedState();
@@ -150,7 +163,7 @@ const LandingContent = () => {
       </div>
 
       {/* HOW IT WORKS */}
-      <div className="bg-muted px-4 md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+      <div className="bg-muted px-4  md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
         <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
           How Does FIIXCONN Works?
         </div>
@@ -172,14 +185,245 @@ const LandingContent = () => {
       </div>
 
       {/* FOR CLIENTS */}
-      <div></div>
+      <div
+        className=" text-white  flex flex-col px-4  md:px-10 xl:px-16 py-16 xl:py-24   bg-black relative"
+        style={{
+          backgroundImage: `url('/images/landing-page/for_client.webp')`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top",
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="flex flex-col md:flex-row z-10 gap-8 items-center md:items-start lg:items-center justify-between">
+          <div className="w-full md:w-[35%] space-y-5  lg:space-y-8">
+            <Badge className="bg-background text-primary uppercase p-2">
+              💼 For Clients
+            </Badge>
 
-      {/* style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1537016549486-1ac154c28ccf?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                }} */}
+            <div className="text-3xl  lg:text-4xl xl:text-5xl font-bold leading-[3.25rem] lg:leading-[4.25rem] ">
+              Find and hire <br className="hidden md:flex" />
+              <span className="my-2 text-red-500">professionals</span>
+              <br />
+              with <span className="text-purple-500">ease.</span>
+            </div>
+
+            <div className="text-sm">
+              Dedicated customer support to assist with any issues or inquiries.
+              Resources and guides help users make the most of the platform.
+            </div>
+
+            <Button size="lg" className="hidden md:flex">
+              Hire a professional now{" "}
+              <SquareArrowOutUpRight className="ml-2 size-6 " />
+            </Button>
+          </div>
+          <div className="w-full md:w-[50%]">
+            <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 lg:grid-cols-2 ">
+              {landingPageClientsGuide.map((guide, index) => (
+                <Card key={index} className="bg-transparent border text-white ">
+                  <CardHeader className="flex flex-row items-center gap-4 p-4">
+                    <Badge className="p-3 px-4">{index + 1}</Badge>
+                    <div className="space-y-2">
+                      <p className=" text-base lg:text-lg font-medium">
+                        {guide.title}
+                      </p>
+                      <p className="text-xs lg:text-sm font-light">
+                        {guide.text}
+                      </p>
+                    </div>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+          <Button size="lg" className=" w-full md:hidden">
+            Hire a professional now{" "}
+            <SquareArrowOutUpRight className="ml-2 size-6 " />
+          </Button>
+        </div>
+      </div>
+
+      {/* Apple store or Google store */}
+      <div className="bg-muted px-4 md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+        <div className="flex items-center flex-col justify-center gap-y-5">
+          <div className="text-center text-primary text-xl md:text-3xl font-medium">
+            Work fast from anywhere
+          </div>
+
+          <div>
+            Stay up to date and move work forward with Fiixconn on iOS &
+            Android. Download the app today.
+          </div>
+
+          <div className="flex items-center gap-4 ">
+            <Link
+              href="/"
+              target="_blank"
+              className="flex items-center bg-black hover:opacity-80 ease-in transition cursor-pointer text-white py-2 px-4 rounded-md gap-3"
+            >
+              <div className="flex-shrink-0 relative size-7 ">
+                <Image alt="google plat" src="/icons/google_play.svg" fill />
+              </div>
+              <div className="flex flex-col ">
+                <p className="text-xs">Download on </p>
+                <p className="text-sm font-medium">Google Play</p>
+              </div>
+            </Link>
+
+            <Link
+              href="/"
+              target="_blank"
+              className="flex items-center bg-black hover:opacity-80 ease-in transition cursor-pointer text-white py-2 px-4 rounded-md gap-3"
+            >
+              <div className="flex-shrink-0 relative size-7 ">
+                <Image alt="google plat" src="/icons/apple.svg" fill />
+              </div>
+              <div className="flex flex-col ">
+                <p className="text-xs">Download on </p>
+                <p className="text-sm font-medium">Google Play</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* FOR SERVICE PROVIDERS */}
+      <div
+        className=" text-white  flex flex-col px-4  md:px-10 xl:px-16 py-16 xl:py-24   bg-black relative"
+        style={{
+          backgroundImage: `url('/images/landing-page/for_service_provider.webp')`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top",
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="flex flex-col md:flex-row z-10 gap-8 items-center md:items-start lg:items-center justify-between">
+          <div className="w-full md:w-[35%] space-y-5  lg:space-y-8">
+            <Badge className="bg-background text-primary uppercase p-2">
+              🛠️ For Service Provider
+            </Badge>
+
+            <div className="text-3xl  lg:text-4xl xl:text-5xl font-bold leading-[3.25rem] lg:leading-[4.25rem] ">
+              Show your <br className="hidden md:flex" />
+              <span className="my-2 text-green-500">services</span>
+              <br />
+              and grow your{" "}
+              <span className="text-red-500">client network.</span>
+            </div>
+
+            <div className="text-sm">
+              Dedicated customer support to assist with any issues or inquiries.
+              Resources and guides help users make the most of the platform.
+            </div>
+
+            <Button size="lg" className="hidden md:flex bg-green-500">
+              Get a Gig
+              <SquareArrowOutUpRight className="ml-2 size-6 " />
+            </Button>
+          </div>
+          <div className="w-full md:w-[50%]">
+            <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 lg:grid-cols-2 ">
+              {landingPageSeriveProvidersGuide.map((guide, index) => (
+                <Card key={index} className="bg-transparent border text-white ">
+                  <CardHeader className="flex flex-row items-center gap-4 p-4">
+                    <Badge className="p-3 px-4 bg-green-500">{index + 1}</Badge>
+                    <div className="space-y-2">
+                      <p className=" text-base lg:text-lg font-medium">
+                        {guide.title}
+                      </p>
+                      <p className="text-xs lg:text-sm font-light">
+                        {guide.text}
+                      </p>
+                    </div>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+          <Button size="lg" className=" w-full tex-green-500 md:hidden">
+            Get a Gig
+            <SquareArrowOutUpRight className="ml-2 size-6 " />
+          </Button>
+        </div>
+      </div>
+
+      {/* USER REVIEWS */}
+      <div className=" px-4  md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+        <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
+          User Reviews
+        </div>
+
+        <div className="flex items-center justify-center">
+          <div className="relative h-[40vh] font-medium w-[55vh] bg-primary flex items-center text-lg lg:text-2xl   text-white justify-center">
+            What Our <br /> Users <br /> Are Saying!
+            {/* FLOATING ICON */}
+            <div className="absolute  inset-5  xl:inset-20 ">
+              <div className="relative size-20 xl:size-32">
+                <Image alt="review" src="/icons/user_review_1.svg" fill />
+              </div>
+            </div>
+            {/* SLIDER BUTTONS */}
+            <div className="absolute bottom-8 right-8 flex items-center gap-[1px]">
+              <Button
+                size="icon"
+                className="bg-white hover:bg-white/70 rounded-r-none"
+              >
+                <MoveLeft className="size-5" color="black" />
+              </Button>
+
+              <Button
+                size="icon"
+                className="bg-white hover:bg-white/70 rounded-l-none"
+              >
+                <MoveRight className="size-5" color="black" />
+              </Button>
+            </div>
+          </div>
+
+          <div className=" relative h-[40vh] w-[55vh] bg-[#F3F8F4] flex items-center justify-center">
+            <div className="flex z-10 p-8 items-center h-full justify-between flex-col">
+              <div className="text-center text-xs line-clamp-3 lg:line-clamp-4 2xl:line-clamp-6 lg:text-sm">
+                I’ve had the pleasure of working with some of the best
+                freelancers on this platform. Their professionalism, expertise,
+                and dedication to delivering high-quality work have consistently
+                exceeded my expectations. The seamless collaboration are simply
+                outstanding. Highly recommended!
+              </div>
+
+              <div className="flex flex-col items-center gap-y-2">
+                <div className="flex items-center gap-x-2">
+                  {landingPageUserReviews.map((review) => (
+                    <Avatar>
+                      <AvatarImage
+                        src={review.image}
+                        alt="avatar"
+                        className=""
+                      />
+                      <AvatarFallback>{review.name}</AvatarFallback>
+                    </Avatar>
+                  ))}
+                </div>
+
+                <div className="text-xs lg:text-sm text-center">
+                  <div className="font-medium">Adeyanju Olawanifemi Praise</div>
+                  <div>CEO & Founder</div>
+                </div>
+              </div>
+            </div>
+
+            {/* FLOATING QUOTE */}
+            <div className="absolute  inset-3  ">
+              <div className="relative size-5 xl:size-10">
+                <Image alt="review" src="/icons/quote.svg" fill />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FOOTER */}
     </div>
   );
 };

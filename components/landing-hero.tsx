@@ -5,7 +5,7 @@ const LandingHero = () => {
   return (
     <div className=" flex items-center justify-center  text-white">
       {/* Optional overlay for better text visibility */}
-      <div className="absolute inset-0 bg-black opacity-0 lg:opacity-20"></div>{" "}
+      <div className="absolute inset-0 bg-black opacity-0 lg:opacity-20"></div>
       <div className="h-[70dvh] sm:h-[60dvh] lg:h-[70dvh] w-full flex flex-col lg:flex-row lg:items-center gap-y-14 md:gap-y-16 lg:gap-y-0 lg:justify-center ">
         <div className="relative z-10 w-full lg:w-[50%] ">
           <div className="w-full text-left space-y-4 sm:space-y-8 py-8">
