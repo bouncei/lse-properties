@@ -44,7 +44,7 @@ const LandingContent = () => {
   return (
     <div className="h-full flex flex-col">
       {/* SPONSORS */}
-      <div className="px-4 md:px-10 xl:px-16 flex flex-col md:flex-row  items-start md:items-center gap-y-6 md:gap-y-0 md:justify-between py-4 md:py-10 xl:py-16 ">
+      <div className="px-4 md:px-10 xl:px-16 flex flex-col md:flex-row  items-start md:items-center gap-y-6 md:gap-y-0 md:justify-between py-8 md:py-10 xl:py-16 ">
         <div className="w-full md:w-[20%] text-muted-foreground">
           Trusted by 25,000+ users Worldwide
         </div>
@@ -62,7 +62,7 @@ const LandingContent = () => {
       </div>
 
       {/* SERVICES */}
-      <div className="px-4 md:px-10 xl:px-16 py-4 bg-muted md:py-10 xl:py-16">
+      <div className="px-4 md:px-10 xl:px-16 py-8 bg-muted md:py-10 xl:py-16">
         <div className="flex items-center flex-col justify-center">
           <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
             Core Serivices For You
@@ -93,7 +93,7 @@ const LandingContent = () => {
       </div>
 
       {/* TALENTS */}
-      <div className="px-4 md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+      <div className="px-4 md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="space-y-4">
           <div className="b-3 md:pb-8  xl:pb-14 text-xl md:text-3xl font-medium">
             Browse through our <span className="text-[#663AC9]">talent</span>{" "}
@@ -161,7 +161,7 @@ const LandingContent = () => {
       </div>
 
       {/* HOW IT WORKS */}
-      <div className="bg-muted px-4  md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+      <div className="bg-muted px-4  md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
           How Does FIIXCONN Works?
         </div>
@@ -243,7 +243,7 @@ const LandingContent = () => {
       </div>
 
       {/* Apple store or Google store */}
-      <div className="bg-muted px-4 md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+      <div className="bg-muted px-4 md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="flex items-center flex-col justify-center gap-y-5">
           <div className="text-center text-primary text-xl md:text-3xl font-medium">
             Work fast from anywhere
@@ -348,7 +348,7 @@ const LandingContent = () => {
       </div>
 
       {/* USER REVIEWS */}
-      <div className=" px-4  md:px-10 xl:px-16 py-4  md:py-10 xl:py-16">
+      <div className=" px-4  md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
           User Reviews
         </div>
