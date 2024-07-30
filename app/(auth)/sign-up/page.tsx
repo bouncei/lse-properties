@@ -8,7 +8,6 @@ import { formSchema } from "./constant";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -20,10 +19,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { Eye, EyeOff, Info } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Circle, CircleDot, Info } from "lucide-react";
 import RegisterDialog from "@/components/dialogs/register-dialog";
 import Logo from "@/components/logo";
+import { Checkbox } from "@/components/ui/checkbox";
+
+const passwordConstraints = [
+  { title: "At least ONE UPPERCASE", value: false },
+  { title: "At least ONE Symbol", value: false },
+  { title: "At least ONE Number", value: false },
+  { title: "Minimum 6 Characters", value: false },
+];
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -32,9 +39,11 @@ const SignUpPage = () => {
     password: false,
     confirmPassword: false,
   });
-
+  const [constraints, setConstraints] = useState(passwordConstraints);
   const [successModal, setSuccessModal] = useState(false);
   const [registerdEmail, setRegisteredEmail] = useState("");
+  const [confirmPasswordMatch, setConfirmPasswordMatch] = useState(false);
+  const [terms, setTerms] = useState<string>("off");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -60,6 +69,14 @@ const SignUpPage = () => {
   };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (!confirmPasswordMatch) return;
+
+    if (terms === "off") {
+      toast.error("Please accept the terms and conditions");
+
+      return;
+    }
+
     try {
       // TODO: on submit functionality
       setSuccessModal(true);
@@ -75,6 +92,32 @@ const SignUpPage = () => {
       router.refresh();
     }
   };
+
+  // Function to check if the password meets the constraints
+  const checkPasswordConstraints = (password: string) => {
+    const constraintsCopy = [...passwordConstraints];
+    constraintsCopy[0].value = /[A-Z]/.test(password); // At least one uppercase letter
+    constraintsCopy[1].value = /[!@#$%^&*(),.?":{}|<>]/.test(password); // At least one symbol
+    constraintsCopy[2].value = /[0-9]/.test(password); // At least one number
+    constraintsCopy[3].value = password.length >= 6; // Minimum 6 characters
+    setConstraints(constraintsCopy);
+  };
+
+  useEffect(() => {
+    // Check password constraints whenever the form's password field changes
+    const subscription = form.watch((value) => {
+      if (value.password === value.confirmPassword) {
+        setConfirmPasswordMatch(true);
+      } else {
+        setConfirmPasswordMatch(false);
+      }
+
+      if (value.password) {
+        checkPasswordConstraints(value.password);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [form.watch]);
 
   return (
     <>
@@ -169,6 +212,24 @@ const SignUpPage = () => {
                 />
 
                 {/* //TODO: ADD PASSWORD CONSTRAINTS */}
+                <div className="flex flex-wrap gap-4 items-center text-muted-foreground">
+                  {constraints.map((constriant) => (
+                    <div
+                      key={constriant.title}
+                      className="flex items-center space-x-2"
+                    >
+                      {constriant.value ? (
+                        <CircleDot className="size-3 flex-shrink-0 md:size-4" />
+                      ) : (
+                        <Circle className="size-3 flex-shrink-0 md:size-4" />
+                      )}
+
+                      <div className="text-xs md:text-sm">
+                        {constriant.title}
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
                 <FormField
                   control={form.control}
@@ -204,15 +265,28 @@ const SignUpPage = () => {
                   )}
                 />
 
+                {!confirmPasswordMatch && (
+                  <div className="text-[#EF4444] text-sm font-medium ">
+                    Passwords doesn't match
+                  </div>
+                )}
+
                 <div className="w-full py-2 text-left text-sm ">
                   {/* <FormLabel>Terms and Conditions</FormLabel> */}
-                  <div className="flex items-center">
-                    <Input
-                      type="checkbox"
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="terms"
                       className="w-4 h-4 text-[#117C35]  rounded border-gray
-                  border focus:ring-[#117C35]  "
+       border focus:ring-[#117C35]  "
+                      onCheckedChange={(checked) =>
+                        setTerms(checked ? "on" : "off")
+                      }
+                      value={terms}
                     />
-                    <span className="ml-2">
+                    <label
+                      htmlFor="terms"
+                      className="text-sm  leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
                       I agree to the{" "}
                       <span className=" underline ease-in hover:opacity-70 text-[#117C35] cursor-pointer hover:scale-105 transition">
                         <Link href="/terms-and-conditions">
@@ -223,12 +297,8 @@ const SignUpPage = () => {
                       <span className=" underline ease-in hover:opacity-70 text-[#117C35] cursor-pointer hover:scale-105 transition">
                         <Link href="/privacy-policy">Privacy Policy.</Link>
                       </span>
-                    </span>
+                    </label>
                   </div>
-
-                  {/* <div>
-                 
-                </div> */}
                 </div>
 
                 <Button

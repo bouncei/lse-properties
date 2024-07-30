@@ -21,11 +21,15 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { Eye, EyeOff, Info } from "lucide-react";
+import { Eye, EyeOff, Info, X } from "lucide-react";
 import Logo from "@/components/logo";
+import { useUserStore } from "@/stores/user-store";
+import { useMountedState } from "react-use";
 
 const SignInPage = () => {
   const router = useRouter();
+  const isMounted = useMountedState();
+  const { isTokenExpired, disableSessionWarning } = useUserStore();
   const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,6 +61,8 @@ const SignInPage = () => {
     }
   };
 
+  if (!isMounted) return;
+
   return (
     <div className="flex flex-1 md:gap-5 lg:gap-10 items-center">
       <div className="flex  flex-col h-full items-start w-full">
@@ -67,6 +73,19 @@ const SignInPage = () => {
           </div>
 
           <div>Connect, create, and grow with our community.</div>
+
+          {isTokenExpired ? (
+            <div className="py-3 px-3 flex items-center justify-between bg-red-500 text-white rounded-md">
+              <div className="text-sm">Session expired. Please login</div>
+
+              <span
+                className="flex-shrink-0 cursor-pointer transition hover:scale-105 ease-in"
+                onClick={disableSessionWarning}
+              >
+                <X className="size-4 md:size-5" />
+              </span>
+            </div>
+          ) : null}
 
           <Form {...form}>
             <form
