@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { Info } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Circle, CircleDot, Info } from "lucide-react";
 import Image from "next/image";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input";
 import SetPasswordDialog from "@/components/dialogs/set-password-dialog";
 import ErrorDialog from "@/components/dialogs/error-dialog";
 import Logo from "@/components/logo";
+import { passwordConstraints } from "@/constants";
 
 const ResetPasswordPage = () => {
   const router = useRouter();
@@ -31,6 +32,8 @@ const ResetPasswordPage = () => {
     password: false,
     confirmPassword: false,
   });
+  const [constraints, setConstraints] = useState(passwordConstraints);
+  const [confirmPasswordMatch, setConfirmPasswordMatch] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -57,6 +60,8 @@ const ResetPasswordPage = () => {
   };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (!confirmPasswordMatch) return;
+
     try {
       // TODO: on submit functionality
       setSuccessModal(true);
@@ -71,6 +76,32 @@ const ResetPasswordPage = () => {
       router.refresh();
     }
   };
+
+  // Function to check if the password meets the constraints
+  const checkPasswordConstraints = (password: string) => {
+    const constraintsCopy = [...passwordConstraints];
+    constraintsCopy[0].value = /[A-Z]/.test(password); // At least one uppercase letter
+    constraintsCopy[1].value = /[!@#$%^&*(),.?":{}|<>]/.test(password); // At least one symbol
+    constraintsCopy[2].value = /[0-9]/.test(password); // At least one number
+    constraintsCopy[3].value = password.length >= 6; // Minimum 6 characters
+    setConstraints(constraintsCopy);
+  };
+
+  useEffect(() => {
+    // Check password constraints whenever the form's password field changes
+    const subscription = form.watch((value) => {
+      if (value.password === value.confirmPassword) {
+        setConfirmPasswordMatch(true);
+      } else {
+        setConfirmPasswordMatch(false);
+      }
+
+      if (value.password) {
+        checkPasswordConstraints(value.password);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [form.watch]);
 
   return (
     <>
@@ -126,6 +157,24 @@ const ResetPasswordPage = () => {
                 />
 
                 {/* //TODO: ADD PASSWORD CONSTRAINTS */}
+                <div className="flex flex-wrap gap-4 items-center text-muted-foreground">
+                  {constraints.map((constriant) => (
+                    <div
+                      key={constriant.title}
+                      className="flex items-center space-x-2"
+                    >
+                      {constriant.value ? (
+                        <CircleDot className="size-3 flex-shrink-0 md:size-4 text-[#117C35]" />
+                      ) : (
+                        <Circle className="size-3 flex-shrink-0 md:size-4" />
+                      )}
+
+                      <div className="text-xs md:text-sm">
+                        {constriant.title}
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
                 <FormField
                   control={form.control}
@@ -160,6 +209,12 @@ const ResetPasswordPage = () => {
                     </FormItem>
                   )}
                 />
+
+                {!confirmPasswordMatch && (
+                  <div className="text-[#EF4444] text-sm font-medium ">
+                    Passwords doesn't match
+                  </div>
+                )}
 
                 <Button
                   size="lg"

@@ -22,12 +22,12 @@ import { Avatar, AvatarFallback } from "./ui/avatar";
 
 const NavBar = () => {
   return (
-    <div className="bg-transparent bg-opacity-30 backdrop-blur-sm  flex items-center  p-4 px-6">
+    <div className="bg-transparent bg-opacity-30 backdrop-blur-sm  flex items-center  px-3  py-4 lg:px-6">
       <MobileSidebar />
 
       <div className="w-full flex items-center justify-between">
         {/* SEARCH BAR */}
-        <div className="relative w-[50%]">
+        <div className="hidden md:inline-flex relative w-[50%]">
           <Input
             type="text"
             placeholder="Search"
@@ -39,8 +39,8 @@ const NavBar = () => {
         </div>
 
         {/* ACCOUNT DETAILS */}
-        <div className="w-[35%]">
-          <div className="w-full flex items-center text-sm justify-between">
+        <div className="w-[35%] flex-1">
+          <div className="w-full flex items-center text-sm gap-2  xl:gap-8 justify-end">
             <Button
               variant="completed"
               size="sm"
@@ -50,7 +50,7 @@ const NavBar = () => {
               <SquareArrowOutUpRight className="size-5 ml-2" />
             </Button>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center justify-end">
               <Button size="icon" variant="ghost">
                 <Bell className="size-5 text-primary" />
               </Button>
@@ -61,7 +61,7 @@ const NavBar = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="focus-visible:ring-0  focus-visible:ring-offset-0"
+                    className="focus-visible:ring-0 hover:bg-transparent md:hover:bg-auto  focus-visible:ring-offset-0"
                   >
                     <Avatar className="mr-2">
                       <AvatarFallback>AP</AvatarFallback>

@@ -24,13 +24,7 @@ import { Circle, CircleDot, Info } from "lucide-react";
 import RegisterDialog from "@/components/dialogs/register-dialog";
 import Logo from "@/components/logo";
 import { Checkbox } from "@/components/ui/checkbox";
-
-const passwordConstraints = [
-  { title: "At least ONE UPPERCASE", value: false },
-  { title: "At least ONE Symbol", value: false },
-  { title: "At least ONE Number", value: false },
-  { title: "Minimum 6 Characters", value: false },
-];
+import { passwordConstraints } from "@/constants";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -73,7 +67,6 @@ const SignUpPage = () => {
 
     if (terms === "off") {
       toast.error("Please accept the terms and conditions");
-
       return;
     }
 
@@ -211,7 +204,6 @@ const SignUpPage = () => {
                   )}
                 />
 
-                {/* //TODO: ADD PASSWORD CONSTRAINTS */}
                 <div className="flex flex-wrap gap-4 items-center text-muted-foreground">
                   {constraints.map((constriant) => (
                     <div
@@ -219,7 +211,7 @@ const SignUpPage = () => {
                       className="flex items-center space-x-2"
                     >
                       {constriant.value ? (
-                        <CircleDot className="size-3 flex-shrink-0 md:size-4" />
+                        <CircleDot className="size-3 flex-shrink-0 md:size-4 text-[#117C35]" />
                       ) : (
                         <Circle className="size-3 flex-shrink-0 md:size-4" />
                       )}
@@ -276,8 +268,8 @@ const SignUpPage = () => {
                   <div className="flex items-center space-x-2">
                     <Checkbox
                       id="terms"
-                      className="w-4 h-4 text-[#117C35]  rounded border-gray
-       border focus:ring-[#117C35]  "
+                      className="w-4 h-4 text-[#117C35]  rounded border-[#117C35]
+       border focus:ring-[#117C35] data-[state=checked]:bg-[#117C35]"
                       onCheckedChange={(checked) =>
                         setTerms(checked ? "on" : "off")
                       }

@@ -21,6 +21,7 @@ const badgeVariants = cva(
           "border-[#3C3B39] bg-[#EEF0F2] text-[#3C3B39] hover:bg-[#EEF0F2]",
         onGoing:
           "hover:bg-[#FFF4DF] border-[#FEA800] bg-[#FFF4DF] text-[#FEA800]",
+        percentage: " bg-[#EEF0F2] text-[#3C3B39] hover:bg-[#EEF0F2]",
       },
     },
     defaultVariants: {
