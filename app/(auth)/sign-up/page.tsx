@@ -110,7 +110,7 @@ const SignUpPage = () => {
       }
     });
     return () => subscription.unsubscribe();
-  }, [form.watch]);
+  }, [form, form.watch]);
 
   return (
     <>
@@ -259,7 +259,7 @@ const SignUpPage = () => {
 
                 {!confirmPasswordMatch && (
                   <div className="text-[#EF4444] text-sm font-medium ">
-                    Passwords doesn't match
+                    Passwords doesn&apos;t match
                   </div>
                 )}
 

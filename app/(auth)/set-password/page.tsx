@@ -101,7 +101,7 @@ const ResetPasswordPage = () => {
       }
     });
     return () => subscription.unsubscribe();
-  }, [form.watch]);
+  }, [form, form.watch]);
 
   return (
     <>
@@ -212,7 +212,7 @@ const ResetPasswordPage = () => {
 
                 {!confirmPasswordMatch && (
                   <div className="text-[#EF4444] text-sm font-medium ">
-                    Passwords doesn't match
+                    Passwords doesn&apos;t match
                   </div>
                 )}
 
