@@ -1,47 +1,25 @@
-"use client";
-import "react-day-picker/style.css";
-import { useState } from "react";
 import Image from "next/image";
-import { addDays, format } from "date-fns";
-import { DateRange, DayPicker } from "react-day-picker";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar";
-import {
-  ArrowRight,
-  BriefcaseBusiness,
-  ChevronDown,
-  Plus,
-  Star,
-} from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { ArrowRight, BriefcaseBusiness, Plus, Star } from "lucide-react";
+
+import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AnalyticsOverview from "@/components/dashboard/analytics-overview";
+import Activities from "@/components/dashboard/activites";
 
 const DashboardPage = () => {
-  const [range, setRange] = useState<DateRange | undefined>();
-
   return (
-    <div className="flex items-start gap-8 text-sm ">
-      <div className="w-[70%] space-y-4">
+    <div className="flex flex-col xl:flex-row items-start gap-8 text-sm ">
+      <div className="w-full xl:w-[70%] space-y-4">
         <div className="rounded-lg text-white border p-4 border-[#C8CFD5] bg-[#374C3D] space-y-4">
           <div className=" font-medium text-3xl">Welocome back Adeyanju!</div>
           <div>Here’s what’s happening on your account today:</div>
 
-          <div className=" flex items-center pt-4 gap-x-4">
+          <div className=" flex flex-col md:flex-row items-center pt-4 gap-4">
             {/* SEARCH FOR SERVICES */}
-            <div className="w-[50%] rounded-lg bg-background border bg-[#E7F2EB]  space-y-4   p-4  ">
+            <div className="w-full md:w-[50%] rounded-lg bg-background border bg-[#E7F2EB]  space-y-4   p-4  ">
               <div className="text-black font-medium">Search for Services</div>
 
               <div className="text-[#5C5B59]">Add funds easily</div>
@@ -55,7 +33,7 @@ const DashboardPage = () => {
             </div>
 
             {/* TOP UP YOUR WALLET */}
-            <div className="w-[50%] rounded-lg bg-background border bg-[#E6EFF6] space-y-4   p-4  ">
+            <div className="w-full md:w-[50%] rounded-lg bg-background border bg-[#E6EFF6] space-y-4   p-4  ">
               <div className="text-black font-medium">Top Up your Wallet</div>
 
               <div className="text-[#5C5B59]">Add funds easily</div>
@@ -70,9 +48,9 @@ const DashboardPage = () => {
           </div>
         </div>
 
-        <div className="flex items-start w-full gap-x-4">
+        <div className="flex flex-col md:flex-row items-start w-full gap-4">
           {/* GIGS OVERVIEW */}
-          <div className="w-[50%] rounded-lg border p-4 border-[#C8CFD5] bg-[#FAFAFB] space-y-4">
+          <div className="w-full md:w-[50%] rounded-lg border p-4 border-[#C8CFD5] bg-[#FAFAFB] space-y-4">
             <div className=" flex items-center gap-4">
               <div className=" flex-shrink-0 relative size-5 md:size-10 ">
                 <Image fill alt="mail" src="/icons/activity.svg" />
@@ -105,7 +83,7 @@ const DashboardPage = () => {
           </div>
 
           {/* REVENUE OVERVIEW */}
-          <div className="w-[50%] rounded-lg border p-4 border-[#C8CFD5] space-y-4 bg-[#FAFAFB]">
+          <div className="w-full md:w-[50%] rounded-lg border p-4 border-[#C8CFD5] space-y-4 bg-[#FAFAFB]">
             <div className=" flex items-center gap-4">
               <div className=" flex-shrink-0 relative size-5 md:size-10 ">
                 <Image fill alt="mail" src="/icons/activity.svg" />
@@ -122,7 +100,7 @@ const DashboardPage = () => {
               <div className="flex justify-between items-center">
                 <div className="font-medium">$ 0</div>
 
-                <Badge className="bg-[#EEF0F2] text-[#5C5B59]">-%</Badge>
+                <Badge variant="percentage">-%</Badge>
               </div>
             </div>
 
@@ -133,203 +111,24 @@ const DashboardPage = () => {
               <div className="flex justify-between items-center">
                 <div className="font-medium">$ 0</div>
 
-                <Badge className="bg-[#EEF0F2] text-[#5C5B59]">-%</Badge>
+                <Badge variant="percentage">-%</Badge>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Analytics Overview */}
-        <div className="rounded-lg border p-4 border-[#C8CFD5] bg-[#FAFAFB] space-y-4">
-          <div className="flex items-center justify-between">
-            <div className=" flex items-center gap-4">
-              <div className=" flex-shrink-0 relative size-5 md:size-10 ">
-                <Image fill alt="analytics" src="/icons/activity.svg" />
-              </div>
-              <div className="font-medium line-clamp-1 lg:text-lg">
-                Analytics Overview
-              </div>
-            </div>
-
-            {/* CALENDAR DROPDOWN */}
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="focus-visible:ring-0  focus-visible:ring-offset-0"
-                >
-                  {range?.from ? (
-                    range.to ? (
-                      <>
-                        {format(range.from, "LLL dd, y")} -{" "}
-                        {format(range.to, "LLL dd, y")}
-                      </>
-                    ) : (
-                      format(range.from, "LLL dd, y")
-                    )
-                  ) : (
-                    <span>Pick a date</span>
-                  )}{" "}
-                  <ChevronDown className="size-5 ml-2" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="z-10 w-full text-sm ">
-                <DayPicker
-                  defaultMonth={new Date()}
-                  mode="range"
-                  min={2}
-                  // max={9}
-                  selected={range}
-                  onSelect={setRange}
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
-
-          <div className="rounded-lg p-4 space-y-4 bg-background">
-            <div className="flex justify-end items-center">
-              <Badge className="bg-red-500 mr-2"></Badge>
-              Spent
-            </div>
-
-            {/* CHARTS */}
-            <Tabs defaultValue="revenue" className="w-full">
-              <TabsList className="w-[400px] grid bg-[#FAFAFB] grid-cols-2">
-                <TabsTrigger
-                  value="revenue"
-                  className="data-[state=active]:bg-primary data-[state=active]:text-white"
-                >
-                  Total revenue
-                </TabsTrigger>
-                <TabsTrigger
-                  value="gigs"
-                  className="data-[state=active]:bg-primary data-[state=active]:text-white"
-                >
-                  Total Gigs
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="revenue">
-                <Card>
-                  <CardHeader>
-                    <CardTitle> TODO: Total Revenue Chart</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    {/* // TODO: TOTAL REVENUE CHART */}
-                  </CardContent>
-                  <CardFooter>{/* <Button>Save changes</Button> */}</CardFooter>
-                </Card>
-              </TabsContent>
-              <TabsContent value="gigs">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>TODO: Total Gigs Chart</CardTitle>
-                  </CardHeader>
-
-                  <CardContent className="space-y-2">
-                    {/* // TODO: TOTAL GIGS CHART */}
-                  </CardContent>
-                  <CardFooter>{/* <Button>Save changes</Button> */}</CardFooter>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </div>
+        {/* Analytics Overview: DESKTOP VIEW */}
+        <div className="hidden xl:inline-block w-full">
+          <AnalyticsOverview />
         </div>
 
-        {/* YOUR ACTIVITIES */}
-        <div className="rounded-lg  p-4  space-y-4">
-          <div className="font-medium line-clamp-1 lg:text-lg">
-            Your Activites
-          </div>
-
-          {/* ACTIVITY TABS */}
-          <Tabs
-            defaultValue="gigs"
-            className="w-full border-none bg-transparent"
-          >
-            <TabsList className="w-full border-b-2 border-[#C8CFD5] bg-transparent  !justify-start !rounded-none !pb-0 !mb-0">
-              <div className="w-[70%] flex">
-                <div className="w-full  grid bg-transparent grid-cols-3">
-                  <TabsTrigger
-                    value="gigs"
-                    className="data-[state=active]:bg-transparent data-[state=active]:border-b-2   data-[state=active]:border-b-primary data-[state=active]:rounded-none rounded-none"
-                  >
-                    Gigs(0)
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="saved-gigs"
-                    className="data-[state=active]:bg-transparent data-[state=active]:border-b-2   data-[state=active]:border-b-primary data-[state=active]:rounded-none rounded-none"
-                  >
-                    Saved Gigs(0)
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="posts"
-                    className="data-[state=active]:bg-transparent data-[state=active]:border-b-2   data-[state=active]:border-b-primary data-[state=active]:rounded-none rounded-none"
-                  >
-                    Posts(0)
-                  </TabsTrigger>
-                </div>
-              </div>
-            </TabsList>
-            <TabsContent value="gigs">
-              <Card className="border-none">
-                <CardContent className="space-y-2">
-                  <div className="flex items-center justify-center gap-4 py-6 flex-col">
-                    <div className="  relative size-12 md:size-32 ">
-                      <Image
-                        fill
-                        alt="mail"
-                        src="/empty-state/project.svg"
-                        className=""
-                      />
-                    </div>
-
-                    <div>No ongoing project yet!</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="saved-gigs">
-              <Card className="border-none">
-                <CardContent className="space-y-2">
-                  <div className="flex items-center justify-center gap-4 py-6 flex-col">
-                    <div className="  relative size-12 md:size-32 ">
-                      <Image
-                        fill
-                        alt="mail"
-                        src="/empty-state/bookmark.svg"
-                        className=""
-                      />
-                    </div>
-
-                    <div>No saved project yet!</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="posts">
-              <Card className="border-none">
-                <CardContent className="space-y-2">
-                  <div className="flex items-center justify-center gap-4 py-6 flex-col">
-                    <div className="  relative size-12 md:size-32 ">
-                      <Image
-                        fill
-                        alt="mail"
-                        src="/empty-state/project.svg"
-                        className=""
-                      />
-                    </div>
-
-                    <div>No post made yet!</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+        {/* YOUR ACTIVITIES: DESKTOP VIEW */}
+        <div className="hidden xl:inline-block w-full">
+          <Activities />
         </div>
       </div>
 
-      <div className="w-[30%] space-y-4">
+      <div className="w-full xl:w-[30%] space-y-4">
         <div className=" rounded-lg border bg-[#FAFAFB]  border-[#C8CFD5] ">
           <div className="p-4 flex flex-col gap-4">
             <div className=" flex items-center gap-4">
@@ -381,7 +180,7 @@ const DashboardPage = () => {
               <div className="flex justify-between items-center">
                 <div>0</div>
 
-                <Badge className="bg-[#EEF0F2] text-[#5C5B59]">-%</Badge>
+                <Badge variant="percentage">-%</Badge>
               </div>
             </div>
 
@@ -392,7 +191,7 @@ const DashboardPage = () => {
               <div className="flex justify-between items-center">
                 <div>0</div>
 
-                <Badge className="bg-[#EEF0F2] text-[#5C5B59]">-%</Badge>
+                <Badge variant="percentage">-%</Badge>
               </div>
             </div>
 
@@ -403,7 +202,7 @@ const DashboardPage = () => {
               <div className="flex justify-between items-center">
                 <div>0</div>
 
-                <Badge className="bg-[#EEF0F2] text-[#5C5B59]">-%</Badge>
+                <Badge variant="percentage">-%</Badge>
               </div>
             </div>
 
@@ -413,6 +212,10 @@ const DashboardPage = () => {
           </div>
         </div>
 
+        {/* Analytics Overview: MOBILE VIEW */}
+        <div className=" xl:hidden w-full">
+          <AnalyticsOverview />
+        </div>
         {/* REVIEWS AND RATING */}
         <div className="rounded-lg border bg-[#FAFAFB]  border-[#C8CFD5] ">
           <div className="p-4 flex flex-col gap-4">
@@ -447,6 +250,11 @@ const DashboardPage = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* YOUR ACTIVITIES: MOBILE VIEW */}
+        <div className=" xl:hidden w-full">
+          <Activities />
         </div>
       </div>
     </div>

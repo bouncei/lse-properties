@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/footer";
 import LandingNav from "@/components/landing-nav";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";

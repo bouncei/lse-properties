@@ -310,3 +310,10 @@ export const landingPageUserReviews = [
       "https://images.unsplash.com/photo-1596596866830-f01857e2ac4f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fHBlcnNvbiUyMHBvcnRyYWl0JTIwZnJlZXxlbnwwfHwwfHx8MA%3D%3D",
   },
 ];
+
+export const passwordConstraints = [
+  { title: "At least ONE UPPERCASE", value: false },
+  { title: "At least ONE Symbol", value: false },
+  { title: "At least ONE Number", value: false },
+  { title: "Minimum 6 Characters", value: false },
+];
