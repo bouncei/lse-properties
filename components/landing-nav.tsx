@@ -52,13 +52,13 @@ const LandingNav = () => {
       </div>
 
       {/* Hanburger menu */}
-      <Button
+      {/* <Button
         className=" lg:hidden hover:bg-[#7d7e7e] "
         variant="ghost"
         size="icon"
       >
         <Menu className="size-6" color="#fff" />
-      </Button>
+      </Button> */}
     </div>
   );
 };

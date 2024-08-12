@@ -1,13 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist, StorageValue } from "zustand/middleware";
 import { jwtDecode } from "jwt-decode";
-
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  token: string;
-}
+import { User } from "@/lib/types";
 
 interface UserStore {
   user: User | null;
