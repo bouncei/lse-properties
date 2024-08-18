@@ -13,13 +13,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { Project } from "@/lib/types";
+import { useProjectsStore } from "@/stores/projects-store";
 
 const filterList = ["all", "negotiating", "ongoing", "review"];
 
 const ProjectsPage = () => {
   const [filter, setFilter] = useState<string>("all");
-  const [projects, setProjects] = useState<Project[]>([]);
+  const { projects } = useProjectsStore();
 
   const completedProjects = useMemo(() => {
     if (projects.length === 0) return [];

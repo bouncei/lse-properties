@@ -24,6 +24,9 @@ const isTokenExpiredHandler = (token: string) => {
 const initialState = {
   user: null,
   isTokenExpired: false,
+  loading: false,
+  success: false,
+  error: null,
 };
 
 export const useUserStore = create(
@@ -37,7 +40,7 @@ export const useUserStore = create(
     }),
 
     {
-      name: "user", // name of the item in localStorage
+      name: "user-stotage", // name of the item in localStorage
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => {
         const { user, isTokenExpired } = state;
