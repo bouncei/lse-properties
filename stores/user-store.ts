@@ -1,13 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist, StorageValue } from "zustand/middleware";
 import { jwtDecode } from "jwt-decode";
-
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  token: string;
-}
+import { User } from "@/lib/types";
 
 interface UserStore {
   user: User | null;
@@ -30,6 +24,9 @@ const isTokenExpiredHandler = (token: string) => {
 const initialState = {
   user: null,
   isTokenExpired: false,
+  loading: false,
+  success: false,
+  error: null,
 };
 
 export const useUserStore = create(
@@ -43,7 +40,7 @@ export const useUserStore = create(
     }),
 
     {
-      name: "user", // name of the item in localStorage
+      name: "user-stotage", // name of the item in localStorage
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => {
         const { user, isTokenExpired } = state;
