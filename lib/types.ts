@@ -10,7 +10,7 @@ export interface Project {
   id: number;
   name: string;
   description: string;
-  status: string;
+  status: "completed" | "review" | "negotiation" | "ongoing";
   progress: number; //!NOT SURE
   user_id: number;
   created_at: string;

@@ -65,11 +65,11 @@ const DashboardPage = () => {
               <Badge variant="completed">0</Badge>
             </div>
 
-            {/* ONGOING */}
+            {/* ongoing */}
             <div className="flex w-full rounded-lg border p-4 border-[#C8CFD5] bg-background justify-between items-center">
-              <div>Ongoing</div>
+              <div>ongoing</div>
 
-              <Badge variant="onGoing">0</Badge>
+              <Badge variant="ongoing">0</Badge>
             </div>
 
             {/* NEGOTIATING */}
@@ -158,7 +158,7 @@ const DashboardPage = () => {
             <div className="rounded-lg border bg-white flex items-center flex-col justify-center p-4  border-[#C8CFD5]">
               <div className="flex items-center gap-x-2">
                 <Badge
-                  variant="onGoing"
+                  variant="ongoing"
                   className="flex items-center font-medium"
                 >
                   <Star className="size-4 mr-2 " />
