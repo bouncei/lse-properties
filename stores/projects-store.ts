@@ -1,15 +1,16 @@
+import { dummyProjects } from "@/constants";
 import { Project } from "@/lib/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface ProjectsStore {
   projects: Project[] | [];
-  getProjects: () => void;
-  getProjectById: () => void;
-  getProjectsByUserId: () => void;
+  getUserProjects: (userId: string) => Promise<any>;
+  getProjectById: (projectId: string) => Promise<any>;
 }
 
 const initialState = {
+  // projects: [],
   projects: [],
   loading: false,
   success: false,
@@ -20,9 +21,15 @@ export const useProjectsStore = create(
   persist<ProjectsStore>(
     (set, get) => ({
       ...initialState,
-      getProjects: () => {},
-      getProjectById: () => {},
-      getProjectsByUserId: () => {},
+
+      getUserProjects: async (userId) => {
+        set({ projects: dummyProjects });
+
+        return true;
+      },
+      getProjectById: async (projectId) => {
+        return true;
+      },
     }),
 
     {
@@ -34,9 +41,8 @@ export const useProjectsStore = create(
           ...initialState,
           projects,
 
-          getProjects: () => {},
-          getProjectById: () => {},
-          getProjectsByUserId: () => {},
+          getUserProjects: () => Promise.resolve(),
+          getProjectById: () => Promise.resolve(),
         };
       },
     }

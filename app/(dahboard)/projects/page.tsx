@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, ListFilter } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,12 +14,23 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { useProjectsStore } from "@/stores/projects-store";
+import { useUserStore } from "@/stores/user-store";
+import ProjectCard from "@/components/cards/project-card";
 
 const filterList = ["all", "negotiating", "ongoing", "review"];
 
 const ProjectsPage = () => {
   const [filter, setFilter] = useState<string>("all");
-  const { projects } = useProjectsStore();
+  const { user } = useUserStore();
+  const { projects, getUserProjects } = useProjectsStore();
+
+  useEffect(() => {
+    // if (!user?.id) return;
+
+    (async () => {
+      await getUserProjects("");
+    })();
+  }, [user]);
 
   const completedProjects = useMemo(() => {
     if (projects.length === 0) return [];
@@ -88,50 +99,66 @@ const ProjectsPage = () => {
                 value="projects"
                 className="data-[state=active]:bg-transparent data-[state=active]:border-b-2   data-[state=active]:border-b-primary data-[state=active]:rounded-none rounded-none"
               >
-                Projects({projects.length})
+                All Projects ({projects.length})
               </TabsTrigger>
               <TabsTrigger
                 value="completed-projects"
                 className="data-[state=active]:bg-transparent data-[state=active]:border-b-2   data-[state=active]:border-b-primary data-[state=active]:rounded-none rounded-none"
               >
-                Completed Projects({completedProjects.length})
+                Completed Projects ({completedProjects.length})
               </TabsTrigger>
             </div>
           </div>
         </TabsList>
-        <TabsContent value="projects">
-          <Card className="border-none">
-            <CardContent className="space-y-2">
-              <div className="flex items-center justify-center gap-4 py-6 flex-col">
-                <div className="  relative size-12 md:size-32 ">
-                  <Image
-                    fill
-                    alt="mail"
-                    src="/empty-state/project1.svg"
-                    className=""
-                  />
-                </div>
 
-                <div>No project yet!</div>
-              </div>
+        {/* ALL PROJECTS */}
+        <TabsContent value="projects">
+          <Card className="border-none py-4 lg:py-8">
+            <CardContent className="grid grid-cols-1 gap-4 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {projects.length === 0 ? (
+                <div className="flex items-center justify-center gap-4 py-6 flex-col">
+                  <div className="  relative size-12 md:size-32 ">
+                    <Image
+                      fill
+                      alt="mail"
+                      src="/empty-state/project1.svg"
+                      className=""
+                    />
+                  </div>
+
+                  <div>No project yet!</div>
+                </div>
+              ) : (
+                projects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))
+              )}
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="completed-projects">
-          <Card className="border-none">
-            <CardContent className="space-y-2">
-              <div className="flex items-center justify-center gap-4 py-6 flex-col">
-                <div className="  relative size-12 md:size-32 ">
-                  <Image
-                    fill
-                    alt="mail"
-                    src="/empty-state/project1.svg"
-                    className=""
-                  />
-                </div>
 
-                <div>No completed project yet!</div>
-              </div>
+        {/* COMPLETED PROJECTS */}
+        <TabsContent value="completed-projects">
+          <Card className="border-none py-4 lg:py-8">
+            <CardContent className="grid grid-cols-1 gap-4 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {completedProjects.length === 0 ? (
+                <div className="flex items-center justify-center gap-4 py-6 flex-col">
+                  <div className="  relative size-12 md:size-32 ">
+                    <Image
+                      fill
+                      alt="mail"
+                      src="/empty-state/project1.svg"
+                      className=""
+                    />
+                  </div>
+
+                  <div>No completed project yet!</div>
+                </div>
+              ) : (
+                completedProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))
+              )}
             </CardContent>
           </Card>
         </TabsContent>
