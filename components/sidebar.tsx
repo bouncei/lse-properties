@@ -13,11 +13,12 @@ const SideBar = () => {
     <div className="space-y-4 py-4 flex flex-col h-full  ">
       <div className=" pb-2 flex-1">
         <Link href="/" className="flex items-center px-3">
-          <div className="relative size-28 md:size-28 -mt-9 -mb-5 mx-2 ">
+          <div className="relative size-28 md:size-24 mx-2 ">
             <Image
               fill
               alt="logo"
-              src={pathname === "/" ? "/home_logo.svg" : "/logo.svg"}
+              src={"/logo.png"}
+              className="object-contain"
             />
           </div>
         </Link>

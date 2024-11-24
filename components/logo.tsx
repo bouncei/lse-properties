@@ -5,7 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const Logo = () => {
+interface LogoProps {
+  component?: string;
+}
+
+const Logo = ({ component }: LogoProps) => {
   const pathname = usePathname();
 
   return (
@@ -14,7 +18,8 @@ const Logo = () => {
         <Image
           fill
           alt="logo"
-          src={pathname === "/" ? "/home_logo.svg" : "/logo.svg"}
+          src={component === "footer" ? "/logo_white.png" : "/logo.png"}
+          className="object-contain object-center"
         />
       </div>
     </Link>

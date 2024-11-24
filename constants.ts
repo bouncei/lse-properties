@@ -88,24 +88,20 @@ export const landingPageRoutes = [
     href: "/",
   },
   {
-    icon: CircleHelp,
-    label: "How it works",
-    href: "/how-it-works",
-  },
-  {
-    icon: HandCoins,
-    label: "Services",
-    href: "/services",
-  },
-  {
     icon: Info,
     label: "About Us",
     href: "/about-us",
   },
+
   {
-    icon: Headset,
-    label: "Contact",
-    href: "/contact",
+    icon: CircleHelp,
+    label: "Properties",
+    href: "/properties",
+  },
+  {
+    icon: HandCoins,
+    label: "Schedule Inspection",
+    href: "/schedule-inspection",
   },
 ];
 
