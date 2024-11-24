@@ -61,7 +61,7 @@ const ResetPasswordPage = () => {
       <div className="flex  flex-col h-full items-start w-full">
         <Link href="/" className="flex items-center">
           <div className="relative size-28 md:size-32 mr-2 md:mr-4">
-            <Image fill alt="logo" src="/logo.svg" />
+            <Image fill alt="logo" src="/logo.png" />
           </div>
         </Link>
 

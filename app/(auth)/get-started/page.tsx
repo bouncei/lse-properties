@@ -20,7 +20,8 @@ export default function Home() {
             <div>
               Discover a seamless way to connect, create, and grow. Whether
               you&apos;re here to offer your services, find the perfect gig, or
-              just stay connected, <b>FIIXCONN</b> has everything you need.
+              just stay connected, <b>LSE Properties</b> has everything you
+              need.
             </div>
 
             <div className="space-y-3 flex flex-col ">

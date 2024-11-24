@@ -11,7 +11,7 @@ function Footer() {
         <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 sm:grid-cols-3 lg:grid-cols-4">
           <div className="w-full ">
             <div className="-mt-9 -mb-5">
-              <Logo />
+              <Logo component="footer" />
             </div>
             <div>
               Our platform is designed to connect individuals in Nigeria with a
@@ -100,7 +100,7 @@ function Footer() {
           </div>
         </div>
         <div className=" text-center border-t pt-5 text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} All Rights Reserved - FIIXCONN
+          &copy; {new Date().getFullYear()} All Rights Reserved - LSE Properties
         </div>
       </div>
     </footer>

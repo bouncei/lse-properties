@@ -163,7 +163,7 @@ const LandingContent = () => {
       {/* HOW IT WORKS */}
       <div className="bg-muted px-4  md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
-          How Does FIIXCONN Works?
+          How Does LSE Properties Works?
         </div>
 
         <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -250,7 +250,7 @@ const LandingContent = () => {
           </div>
 
           <div>
-            Stay up to date and move work forward with Fiixconn on iOS &
+            Stay up to date and move work forward with LSE Properties on iOS &
             Android. Download the app today.
           </div>
 
