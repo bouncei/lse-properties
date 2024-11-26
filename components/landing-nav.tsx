@@ -27,7 +27,7 @@ const LandingNav = () => {
             className={cn(
               "text-black",
               pathname === "/" &&
-                "text-black hover:text-blue-600 hover:scale-110 ease-in transition duration-150"
+                "text-white hover:text-blue-600 hover:scale-110 ease-in transition duration-150"
             )}
           >
             <Link href={route.href}>{route.label}</Link>

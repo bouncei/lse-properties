@@ -8,8 +8,8 @@ function Footer() {
   return (
     <footer className="bg-[#032747] text-white py-8 px-4 md:px-10 xl:px-16  md:py-10 xl:py-16">
       <div className=" mx-auto sm:px-6 lg:px-8">
-        <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 sm:grid-cols-3 lg:grid-cols-4">
-          <div className="w-full ">
+        <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 md:grid-cols-3 lg:grid-cols-4 pb-8">
+          <div className="w-full lg:col-span-2">
             <div className="-mt-9 -mb-5">
               <Logo component="footer" />
             </div>
@@ -33,6 +33,7 @@ function Footer() {
               </a>
             </div>
           </div>
+
           <div className="w-full ">
             <h5 className="text-lg font-bold mb-4">Quick Links</h5>
             <ul>
@@ -58,31 +59,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="w-full ">
-            <h5 className="text-lg font-bold mb-4">Community</h5>
-            <ul>
-              <li>
-                <a href="#" className="hover:underline">
-                  Leaners
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Leadership
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Partners
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Developers
-                </a>
-              </li>
-            </ul>
-          </div>
+
           <div className="w-full">
             <h5 className="text-lg font-bold mb-4">Newsletter</h5>
             <p>Sign up and receive the latest tips via email.</p>
