@@ -7,6 +7,7 @@ import { authorType } from "./schemaTypes/authorType";
 import { inspectionType } from "./schemaTypes/inspectionType";
 import { cityType } from "./schemaTypes/cityType";
 import { projectType } from "./schemaTypes/projectType";
+import { testimonialType } from "./schemaTypes/testimonialType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     cityType,
     projectType,
     inspectionType,
+    testimonialType,
   ],
 };

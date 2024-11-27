@@ -45,7 +45,7 @@ export const projectType = defineType({
       name: "gallery",
       title: "Gallery",
       type: "array",
-      of: [{ type: "image" }], // ACCEPT BOTH IMAGE AND VIDEO MEDIA TYPES
+      of: [{ type: "image" }],
       options: {
         layout: "grid", // Optional: Displays images in a grid layout
       },
