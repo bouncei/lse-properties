@@ -1,14 +1,5 @@
+// INSPECTION SCHEMA
 import { defineType, defineField } from "sanity";
-
-const cityOptions = [
-  { title: "Abuja", value: "Abuja" },
-  // TODO: Add more cities as needed
-];
-
-const projectOptions = [
-  { title: "Abuja", value: "Abuja" },
-  // TODO: Add more projects as needed
-];
 
 export const inspectionType = defineType({
   name: "inspection",
@@ -35,22 +26,37 @@ export const inspectionType = defineType({
     }),
     defineField({
       name: "city",
-      type: "string",
       title: "City",
-      options: {
-        list: cityOptions,
-      },
-
+      type: "reference",
+      to: { type: "city" },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "project",
-      type: "string",
       title: "Project",
+      type: "reference",
+      to: { type: "project" },
       options: {
-        list: projectOptions,
+        filter: ({ document }) => {
+          // Type guard to ensure we are safely accessing the _ref property
+          if (
+            document?.city &&
+            typeof document.city === "object" &&
+            "_ref" in document.city
+          ) {
+            return {
+              filter: "city._ref == $cityId",
+              params: { cityId: document.city._ref },
+            };
+          }
+          return {
+            filter: "",
+            params: { cityId: "" },
+          };
+        },
       },
       validation: (Rule) => Rule.required(),
+      hidden: ({ document }) => !document?.city, // Hide the field if no city is selected
     }),
     defineField({
       name: "date",
@@ -66,6 +72,3 @@ export const inspectionType = defineType({
     }),
   ],
 });
-
-export const cityList = cityOptions;
-export const projectList = projectOptions;
