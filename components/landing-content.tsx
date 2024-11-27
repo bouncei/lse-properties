@@ -125,10 +125,10 @@ const LandingContent = () => {
                 {(category.toLowerCase() === "all"
                   ? landingPageTalents
                   : category.toLowerCase() === "development"
-                  ? developmentTalentsFiltered
-                  : category.toLowerCase() === "design"
-                  ? designTalentsFiltered
-                  : brandingTalentsFiltered
+                    ? developmentTalentsFiltered
+                    : category.toLowerCase() === "design"
+                      ? designTalentsFiltered
+                      : brandingTalentsFiltered
                 ).map((talent, index) => (
                   <Card
                     key={index}
@@ -350,7 +350,7 @@ const LandingContent = () => {
       {/* USER REVIEWS */}
       <div className=" px-4  md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
-          User Reviews
+          Client’s & Realtors Feedback
         </div>
 
         <div className="flex items-center justify-center">
@@ -420,8 +420,6 @@ const LandingContent = () => {
           </div>
         </div>
       </div>
-
-      {/* FOOTER */}
     </div>
   );
 };

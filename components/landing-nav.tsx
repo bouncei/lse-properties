@@ -48,9 +48,11 @@ const LandingNav = () => {
           <Link href="/sign-in">Login</Link>
         </Button> */}
 
-        <Button size="lg" className="">
-          <MessageCircle className="size-4 mr-2" />
-          Contact Us
+        <Button asChild size="lg" className="">
+          <Link href="https://wa.me/2348020860321" target="_blank">
+            <MessageCircle className="size-4 mr-2" />
+            Contact Us
+          </Link>
         </Button>
       </div>
 

@@ -3,6 +3,7 @@ import React from "react";
 import Logo from "./logo";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -36,26 +37,30 @@ function Footer() {
 
           <div className="w-full ">
             <h5 className="text-lg font-bold mb-4">Quick Links</h5>
-            <ul>
+            <ul className="space-y-1 lg:space-y-2">
               <li>
-                <a href="#" className="hover:underline">
-                  Career
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
+                <Link href="/about-us" className="hover:underline">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <Link href="/properties" className="hover:underline">
+                  Properties
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://wa.me/2348020860321"
+                  target="_blank"
+                  className="hover:underline"
+                >
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <Link href="#" className="hover:underline">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
