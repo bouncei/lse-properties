@@ -1,25 +1,13 @@
 export interface User {
-  id: number;
+  id: string;
   name: string;
   email: string;
   token: string;
   //  TODO: ADD OTHER NEEDED INFORMATION
 }
 
-export interface Project {
-  id: number;
-  name: string;
-  description: string;
-  status: "completed" | "review" | "negotiation" | "ongoing";
-  progress: number; //!NOT SURE
-  user_id: number;
-  created_at: string;
-  updated_at: string;
-  //  TODO: ADD OTHER NEEDED INFORMATION
-}
-
 export interface Gig {
-  id: number;
+  id: string;
   name: string;
   description: string;
   status: string;
@@ -28,4 +16,20 @@ export interface Gig {
   created_at: string;
   updated_at: string;
   //  TODO: ADD OTHER NEEDED INFORMATION
+}
+
+export interface City {
+  id: string;
+  name: string;
+  image: string;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  description: string;
+  city: string;
+  image: string;
+  gallery: string[];
+  faq: any[];
 }

@@ -52,5 +52,39 @@ export const projectType = defineType({
       validation: (Rule) =>
         Rule.min(2).error("You must add at least 2 images to the gallery."),
     }),
+    defineField({
+      name: "faq",
+      title: "FAQ",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "question",
+              type: "string",
+              title: "Question",
+              validation: (Rule) => Rule.required().min(1).max(200),
+            }),
+            defineField({
+              name: "answer",
+              type: "text",
+              title: "Answer",
+              validation: (Rule) => Rule.required().min(1),
+            }),
+          ],
+          preview: {
+            select: {
+              title: "question",
+              subtitle: "answer",
+            },
+          },
+        },
+      ],
+      options: {
+        layout: "list", // Optional: Displays FAQs in a list layout
+      },
+      validation: (Rule) => Rule.min(1).error("You must add at least one FAQ."),
+    }),
   ],
 });
