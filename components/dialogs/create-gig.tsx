@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { useGigsStore } from "@/stores/gigs-store";
 import {
   Dialog,
   DialogContent,
@@ -47,7 +46,6 @@ const formSchema = z.object({
 });
 
 const CreateGigDialog = ({ isOpen, onClose }: CreateGigDialogProps) => {
-  const { getGigsByUser } = useGigsStore();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
