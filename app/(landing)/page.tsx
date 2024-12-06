@@ -22,8 +22,6 @@ const LandingPage = () => {
         </div>
 
         <LandingContent />
-
-        <Footer />
       </div>
     </div>
   );

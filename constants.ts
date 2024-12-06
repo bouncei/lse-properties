@@ -16,7 +16,6 @@ import {
   Info,
   Headset,
 } from "lucide-react";
-import { Project } from "./lib/types";
 
 export const dashboardRoutes = {
   section1: [
@@ -313,57 +312,4 @@ export const passwordConstraints = [
   { title: "At least ONE Symbol", value: false },
   { title: "At least ONE Number", value: false },
   { title: "Minimum 6 Characters", value: false },
-];
-
-export const dummyProjects: Project[] = [
-  {
-    id: 1,
-    name: "Project 1",
-    description: "This is a sample project",
-    status: "ongoing",
-    progress: 30,
-    user_id: 1,
-    created_at: "2022-01-01 00:00:00",
-    updated_at: "2022-01-05 00:00:00",
-  },
-  {
-    id: 2,
-    name: "Project 2",
-    description: "This is another sample project",
-    status: "review",
-    progress: 60,
-    user_id: 2,
-    created_at: "2022-01-05 00:00:00",
-    updated_at: "2022-01-10 00:00:00",
-  },
-  {
-    id: 3,
-    name: "Project 3",
-    description: "This is a third sample project",
-    status: "completed",
-    progress: 100,
-    user_id: 3,
-    created_at: "2022-01-10 00:00:00",
-    updated_at: "2022-01-15 00:00:00",
-  },
-  {
-    id: 4,
-    name: "Project 4",
-    description: "This is a fourth sample project",
-    status: "negotiation",
-    progress: 20,
-    user_id: 4,
-    created_at: "2022-01-15 00:00:00",
-    updated_at: "2022-01-20 00:00:00",
-  },
-  {
-    id: 5,
-    name: "Project 5",
-    description: "This is a fifth sample project",
-    status: "ongoing",
-    progress: 40,
-    user_id: 5,
-    created_at: "2022-01-20 00:00:00",
-    updated_at: "2022-01-25 00:00:00",
-  },
 ];

@@ -93,7 +93,7 @@ const LandingContent = () => {
       </div>
 
       {/* TALENTS */}
-      <div className="px-4 md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
+      {/* <div className="px-4 md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="space-y-4">
           <div className="b-3 md:pb-8  xl:pb-14 text-xl md:text-3xl font-medium">
             Browse through our <span className="text-[#663AC9]">talent</span>{" "}
@@ -125,10 +125,10 @@ const LandingContent = () => {
                 {(category.toLowerCase() === "all"
                   ? landingPageTalents
                   : category.toLowerCase() === "development"
-                  ? developmentTalentsFiltered
-                  : category.toLowerCase() === "design"
-                  ? designTalentsFiltered
-                  : brandingTalentsFiltered
+                    ? developmentTalentsFiltered
+                    : category.toLowerCase() === "design"
+                      ? designTalentsFiltered
+                      : brandingTalentsFiltered
                 ).map((talent, index) => (
                   <Card
                     key={index}
@@ -158,7 +158,7 @@ const LandingContent = () => {
             </Button>
           </Tabs>
         </div>
-      </div>
+      </div> */}
 
       {/* HOW IT WORKS */}
       <div className="bg-muted px-4  md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
@@ -183,7 +183,7 @@ const LandingContent = () => {
       </div>
 
       {/* FOR CLIENTS */}
-      <div
+      {/* <div
         className=" text-white  flex flex-col px-4  md:px-10 xl:px-16 py-16 xl:py-24   bg-black relative"
         style={{
           backgroundImage: `url('/images/landing-page/for_client.webp')`,
@@ -240,10 +240,10 @@ const LandingContent = () => {
             <SquareArrowOutUpRight className="ml-2 size-6 " />
           </Button>
         </div>
-      </div>
+      </div> */}
 
       {/* Apple store or Google store */}
-      <div className="bg-muted px-4 md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
+      {/* <div className="bg-muted px-4 md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="flex items-center flex-col justify-center gap-y-5">
           <div className="text-center text-primary text-xl md:text-3xl font-medium">
             Work fast from anywhere
@@ -284,10 +284,10 @@ const LandingContent = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* FOR SERVICE PROVIDERS */}
-      <div
+      {/* <div
         className=" text-white  flex flex-col px-4  md:px-10 xl:px-16 py-16 xl:py-24   bg-black relative"
         style={{
           backgroundImage: `url('/images/landing-page/for_service_provider.webp')`,
@@ -345,12 +345,12 @@ const LandingContent = () => {
             <SquareArrowOutUpRight className="ml-2 size-6 " />
           </Button>
         </div>
-      </div>
+      </div> */}
 
       {/* USER REVIEWS */}
       <div className=" px-4  md:px-10 xl:px-16 py-8  md:py-10 xl:py-16">
         <div className="pb-3 md:pb-8 text-center xl:pb-14 text-primary text-xl md:text-3xl font-medium">
-          User Reviews
+          Client’s & Realtors Feedback
         </div>
 
         <div className="flex items-center justify-center">
@@ -420,8 +420,6 @@ const LandingContent = () => {
           </div>
         </div>
       </div>
-
-      {/* FOOTER */}
     </div>
   );
 };

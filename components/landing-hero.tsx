@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const LandingHero = () => {
   return (
@@ -47,12 +48,14 @@ const LandingHero = () => {
               efficient experience for all users.
             </p>
             <div className=" flex  md:items-center sm:flex-row gap-2 md:gap-4">
-              <Button variant="default" size="lg">
-                Get Started
+              <Button asChild variant="default" size="lg">
+                <Link href="https://wa.me/2348020860321" target="_blank">
+                  Buy Now
+                </Link>
               </Button>
-              <Button variant="outline" size="lg" className="bg-transperent">
+              {/* <Button variant="outline" size="lg" className="bg-transperent">
                 Learn More
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
