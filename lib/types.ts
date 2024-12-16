@@ -19,9 +19,10 @@ export interface Gig {
 }
 
 export interface City {
-  id: string;
+  _id: string;
   name: string;
-  image: string;
+  image: any;
+  description: string;
 }
 
 export interface Project {

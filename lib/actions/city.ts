@@ -3,7 +3,7 @@ import { client } from "@/sanity/lib/client";
 // GET ALL CITIES
 export async function getAllCities(): Promise<any[]> {
   const query = `*[_type == "city"]{
-    name, image, description}`;
+    _id, name, image, description}`;
 
   try {
     const cities = await client.fetch(query);
