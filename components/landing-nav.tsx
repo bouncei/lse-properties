@@ -15,7 +15,12 @@ const LandingNav = () => {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-0  bg-transparent  flex items-center justify-between  z-20">
+    <div
+      className={cn(
+        "sticky top-0  bg-transparent  flex items-center justify-between  z-20",
+        pathname !== "/" && "px-4 md:px-10 xl:px-16"
+      )}
+    >
       <Logo />
       <div className="hidden lg:flex  items-center">
         {landingPageRoutes.map((route) => (

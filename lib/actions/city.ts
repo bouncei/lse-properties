@@ -13,3 +13,17 @@ export async function getAllCities(): Promise<any[]> {
     return [];
   }
 }
+
+// GET CITY BY NAME
+export async function getCityByName(name: string): Promise<any> {
+  const query = `*[_type == "city" && name == $name]{
+  _id, name, image, description}`;
+  const params = { name };
+  try {
+    const city = await client.fetch(query, params);
+    return city[0];
+  } catch (error) {
+    console.error("Error fetching city:", error);
+    return null;
+  }
+}

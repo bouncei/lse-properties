@@ -9,13 +9,12 @@ import CityCard from "@/components/cards/city-card";
 export default async function PropertiesPage() {
   let cities: City[] = await getAllCities();
 
-  console.log("All cities", cities);
   return (
     <PageWrapper
-      title="Properties"
-      subTitle="Kindly Click On View Listings Under The City of Your Choice To See Details About The Project You’ll Like To Buy or Your Property of Choice."
+      title="Cities"
+      subTitle="Kindly Click On A City of Your Choice To See Details About The Project You’ll Like To Buy or Your Property of Choice."
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 justify-between">
+      <div className="grid grid-cols-1 gap-8 lg:gap-10 lg:grid-cols-2 ">
         {cities.map((city) => (
           <CityCard key={city._id} city={city} />
         ))}
