@@ -11,14 +11,14 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   subTitle,
 }) => {
   return (
-    <div className="my-10 lg:my-16">
-      <>
+    <div className="my-6 lg:my-10">
+      <div className="gap-8 mb-10">
         <div className="font-medium text-xl lg:text-5xl text-center ">
           {title}
         </div>
         <div className="my-4 text-base lg:text-lg text-center">{subTitle}</div>
-        {children}
-      </>
+      </div>
+      {children}
     </div>
   );
 };
