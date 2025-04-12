@@ -23,7 +23,7 @@ const LandingHero = () => {
         >
           <div className="w-full text-left space-y-4 sm:space-y-8 py-8">
             <motion.div
-              className="text-4xl lg:text-5xl xl:text-6xl font-bold relative"
+              className="text-4xl lg:text-5xl xl:text-6xl  sm:text-center font-bold relative"
               variants={fadeInUp}
             >
               Own Your Future
@@ -35,7 +35,7 @@ const LandingHero = () => {
                   <Image alt="square_float" src="/hero_square_float.svg" fill />
                 </div>
               </motion.div>
-              <div className="hidden xl:block">
+              {/* <div className="hidden xl:block">
                 <motion.div
                   className="z-20 absolute -top-3 right-0"
                   variants={scaleIn}
@@ -60,10 +60,10 @@ const LandingHero = () => {
                     />
                   </div>
                 </motion.div>
-              </div>
+              </div> */}
             </motion.div>
             <motion.p
-              className="text-sm sm:text-base sm:text-center lg:max-w-2xl mr-auto"
+              className="text-sm sm:text-base sm:text-center "
               variants={slideIn}
             >
               Why pay rent forever when you can own? Properties by LSE is

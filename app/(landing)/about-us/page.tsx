@@ -75,7 +75,7 @@ const AboutUsPage = () => {
         subTitle="Building Dreams, Creating Opportunities"
       >
         <motion.div
-          className="container mx-auto px-4"
+          className="container mx-auto px-4 md:px-10 xl:px-16"
           variants={staggerContainer}
         >
           <motion.div
@@ -100,7 +100,10 @@ const AboutUsPage = () => {
       </PageWrapper>
 
       {/* Why Choose Us Section */}
-      <motion.section className="py-16 bg-gray-50" variants={fadeInUp}>
+      <motion.section
+        className="py-16 px-4 md:px-10 xl:px-16 bg-gray-50"
+        variants={fadeInUp}
+      >
         <WhyChooseUs />
       </motion.section>
 
@@ -110,7 +113,7 @@ const AboutUsPage = () => {
         subTitle="The principles that guide our service excellence"
       >
         <motion.div
-          className="container mx-auto px-4"
+          className="container mx-auto px-4 md:px-10 xl:px-16"
           variants={staggerContainer}
         >
           <motion.div
@@ -146,7 +149,7 @@ const AboutUsPage = () => {
       {/* Contact Information */}
       <motion.section className="py-16 bg-gray-50" variants={fadeInUp}>
         <motion.div
-          className="container mx-auto px-4"
+          className="container mx-auto px-4 md:px-10 xl:px-16"
           variants={staggerContainer}
         >
           <motion.div className="text-center mb-12" variants={fadeInUp}>
