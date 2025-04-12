@@ -1,7 +1,7 @@
 // INSPECTION SCHEMA
 import { defineType, defineField } from "sanity";
 
-export const inspectionType = defineType({
+export default defineType({
   name: "inspection",
   type: "document",
   fields: [
