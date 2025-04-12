@@ -33,7 +33,7 @@ const values = [
   {
     title: "Client-Centric",
     description:
-      "Our clients' success and satisfaction are at the heart of everything we do.",
+      "Our clients&apos; success and satisfaction are at the heart of everything we do.",
   },
 ];
 
@@ -90,10 +90,10 @@ const AboutUsPage = () => {
               transparent, efficient, and innovative property solutions.
             </motion.p>
             <motion.p className="text-gray-600 mb-8" variants={slideIn}>
-              We believe that owning real estate shouldn't be just a dream—it
-              should be your reality. Through our commitment to excellence and
-              customer satisfaction, we've helped thousands of clients achieve
-              their property ownership goals.
+              We believe that owning real estate shouldn&apos;t be just a
+              dream—it should be your reality. Through our commitment to
+              excellence and customer satisfaction, we&apos;ve helped thousands
+              of clients achieve their property ownership goals.
             </motion.p>
           </motion.div>
         </motion.div>
@@ -152,7 +152,7 @@ const AboutUsPage = () => {
           <motion.div className="text-center mb-12" variants={fadeInUp}>
             <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
             <p className="text-gray-600">
-              We're here to answer any questions you may have
+              We&apos;re here to answer any questions you may have
             </p>
           </motion.div>
           <motion.div

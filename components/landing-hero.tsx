@@ -70,9 +70,9 @@ const LandingHero = () => {
               revolutionizing real estate in Abuja, Ibadan & Beyond, making
               property ownership easy, accessible, and affordable for young
               people, first-time buyers, and smart investors. We believe that
-              owning real estate shouldn't be a dream—it should be your reality!
-              The journey is much more rewarding with us so start building
-              wealth today!
+              owning real estate shouldn&apos;t be a dream—it should be your
+              reality! The journey is much more rewarding with us so start
+              building wealth today!
             </motion.p>
             <motion.div
               className="flex md:items-center md:justify-center flex-row flex-wrap gap-2 md:gap-4"

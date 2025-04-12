@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { defaultImage } from "@/lib/constants";
 
 interface PropertyPageProps {
   params: {
@@ -40,10 +41,20 @@ const PropertyPage = ({ params }: PropertyPageProps) => {
     );
   }
 
+  const mainImageUrl = property.mainImage
+    ? urlForImage(property.mainImage)?.url()
+    : null;
+
   const allImages = [
-    { url: urlForImage(property.mainImage).url(), alt: property.title },
+    ...(mainImageUrl
+      ? [{ url: mainImageUrl, alt: property.title }]
+      : [defaultImage]),
     ...(property.images || []),
   ];
+
+  if (allImages.length === 0) {
+    allImages.push(defaultImage);
+  }
 
   const formatPrice = (price: number) => {
     if (price >= 1000000) {

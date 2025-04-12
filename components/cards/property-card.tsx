@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { urlForImage } from "@/lib/sanity.image";
 import { cn } from "@/lib/utils";
+import { defaultImage } from "@/lib/constants";
 
 interface PropertyCardProps {
   property: {
@@ -34,7 +35,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
       <div className="relative h-48">
         <Image
-          src={urlForImage(property.mainImage).url()}
+          src={urlForImage(property.mainImage)?.url() || defaultImage.url}
           alt={property.title}
           fill
           className="object-cover"
