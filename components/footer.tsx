@@ -111,17 +111,32 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social Links */}
-        <div className="flex justify-end gap-4 mb-8">
-          <Link href="https://facebook.com" target="_blank">
-            <Facebook className="w-6 h-6 hover:text-primary" />
-          </Link>
-          <Link href="https://instagram.com" target="_blank">
-            <Instagram className="w-6 h-6 hover:text-primary" />
-          </Link>
-          <Link href="https://linkedin.com" target="_blank">
-            <Linkedin className="w-6 h-6 hover:text-primary" />
-          </Link>
+        <div className="flex justify-between items-center mb-8">
+          {/* Social Links */}
+          <div className="flex justify-end gap-4 ">
+            <Link href="https://facebook.com" target="_blank">
+              <Facebook className="w-6 h-6 hover:text-primary" />
+            </Link>
+            <Link href="https://instagram.com" target="_blank">
+              <Instagram className="w-6 h-6 hover:text-primary" />
+            </Link>
+            <Link href="https://linkedin.com" target="_blank">
+              <Linkedin className="w-6 h-6 hover:text-primary" />
+            </Link>
+          </div>
+
+          {/* DEVELOPER BRANDING */}
+          <p className="text-gray-400">
+            Built by{" "}
+            <a
+              href="https://bouncei.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 transition-colors"
+            >
+              Bouncey
+            </a>
+          </p>
         </div>
 
         {/* Copyright */}
