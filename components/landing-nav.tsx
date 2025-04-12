@@ -30,7 +30,7 @@ const LandingNav = () => {
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-24 bg-white/5 backdrop-blur-sm border-b border-white/20 flex items-center px-4 md:px-10 xl:px-16",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 sm:h-24 bg-white/5 backdrop-blur-sm border-b border-white/20 flex items-center px-4 md:px-10 xl:px-16",
         scrolled ? " shadow-md" : "",
         pathname !== "/" && "",
         pathname === "/" &&
