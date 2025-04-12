@@ -1,76 +1,86 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-
 import Logo from "./logo";
 import { landingPageRoutes } from "@/constants";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { Menu, MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import MobileSidebar from "./mobile-side-bar";
 
 const LandingNav = () => {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div
       className={cn(
-        "sticky top-0  bg-transparent  flex items-center justify-between  z-20",
-        pathname !== "/" && "px-4 md:px-10 xl:px-16"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-24 bg-white/5 backdrop-blur-sm border-b border-white/20 flex items-center px-4 md:px-10 xl:px-16",
+        scrolled ? " shadow-md" : "",
+        pathname !== "/" && "",
+        pathname === "/" &&
+          !scrolled &&
+          "border-b-0 bg-transparent backdrop-blur-none"
       )}
     >
-      <Logo />
-      <div className="hidden lg:flex  items-center">
-        {landingPageRoutes.map((route) => (
+      <div className="container mx-auto flex items-center justify-between">
+        <Logo />
+        <div className="hidden lg:flex items-center">
+          {landingPageRoutes.map((route) => (
+            <Button
+              asChild
+              size="lg"
+              variant="navlink"
+              key={route.href}
+              className={cn(
+                scrolled
+                  ? "text-black"
+                  : "text-black hover:text-blue-600 hover:scale-110 ease-in transition duration-150",
+                pathname === route.href && "text-primary font-semibold"
+              )}
+            >
+              <Link href={route.href}>{route.label}</Link>
+            </Button>
+          ))}
+        </div>
+
+        <div className="hidden lg:flex items-center gap-x-1 md:gap-x-2">
           <Button
             asChild
             size="lg"
-            variant="navlink"
-            key={route.href}
             className={cn(
-              "text-black",
-              pathname === "/" &&
-                "text-white hover:text-blue-600 hover:scale-110 ease-in transition duration-150"
+              "transition-colors",
+              scrolled
+                ? "bg-primary text-white"
+                : "bg-primary/10 text-primary hover:bg-primary/20",
+              pathname === "/" && !scrolled && "bg-primary text-white"
             )}
           >
-            <Link href={route.href}>{route.label}</Link>
+            <Link href="https://wa.me/2348020860321" target="_blank">
+              <MessageCircle className="size-4 mr-2" />
+              Contact Us
+            </Link>
           </Button>
-        ))}
-      </div>
+        </div>
 
-      <div className="hidden lg:flex items-center gap-x-1 md:gap-x-2">
-        {/* <Button
-          variant="ghost"
-          size="lg"
-          asChild
-          className={cn(
-            "text-black hover:bg-transparent transition ease-in hover:text-blue-400",
-            pathname === "/" && "text-black"
-          )}
-        >
-          <Link href="/sign-in">Login</Link>
-        </Button> */}
-
-        <Button asChild size="lg" className="">
-          <Link href="https://wa.me/2348020860321" target="_blank">
-            <MessageCircle className="size-4 mr-2" />
-            Contact Us
-          </Link>
-        </Button>
-      </div>
-
-      {/* Hanburger menu */}
-      {/* <Button
-          className=" lg:hidden hover:bg-[#7d7e7e]  "
-          variant="ghost"
-          size="icon"
-        >
-          <Menu className="size-6" color="#fff" />
-        </Button> */}
-      <div className=" lg:hidden  ">
-        <MobileSidebar />
+        <div className="lg:hidden">
+          <MobileSidebar />
+        </div>
       </div>
     </div>
   );

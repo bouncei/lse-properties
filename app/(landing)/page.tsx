@@ -1,29 +1,77 @@
 "use client";
 
 import Footer from "@/components/footer";
-import LandingContent from "@/components/landing-content";
 import LandingHero from "@/components/landing-hero";
 import LandingNav from "@/components/landing-nav";
-import SideBar from "@/components/sidebar";
-import React from "react";
+import PropertySearch from "@/components/property-search";
+import WhyChooseUs from "@/components/why-choose-us";
+import FeaturedListings from "@/components/featured-listings";
+import HowItWorks from "@/components/how-it-works";
+import Testimonials from "@/components/testimonials";
+import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const LandingPage = () => {
   return (
-    <div className="h-full flex flex-col relative">
-      {/* SIDE BAR */}
-      {/* <div className="hidden h-full md:flex md:flex-col md:fixed  md:w-72 md:inset-y-0">
-        <SideBar />
-      </div> */}
-
-      <div className="flex flex-1 flex-col ">
-        <div className="h-[90dvh]  flex flex-col lg:h-screen px-4 md:px-10 xl:px-16  landing-hero-container">
+    <motion.div
+      className="min-h-screen flex flex-col relative"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
+      <div className="flex-1 flex flex-col">
+        {/* Hero Section */}
+        <motion.div
+          className="h-[90dvh] lg:h-screen px-4 md:px-10 xl:px-16 landing-hero-container"
+          variants={fadeInUp}
+        >
           <LandingNav />
           <LandingHero />
-        </div>
+        </motion.div>
 
-        <LandingContent />
+        {/* Property Search */}
+        <motion.div
+          className="relative -mt-20 z-20 px-4 md:px-10 xl:px-16"
+          variants={fadeInUp}
+        >
+          <PropertySearch onSearch={() => {}} />
+        </motion.div>
+
+        {/* Featured Listings */}
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16 bg-gray-50"
+          variants={fadeInUp}
+        >
+          <FeaturedListings />
+        </motion.div>
+
+        {/* Why Choose Us */}
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16"
+          variants={fadeInUp}
+        >
+          <WhyChooseUs />
+        </motion.div>
+
+        {/* How It Works */}
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16 bg-gray-50"
+          variants={fadeInUp}
+        >
+          <HowItWorks />
+        </motion.div>
+
+        {/* Testimonials */}
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16"
+          variants={fadeInUp}
+        >
+          <Testimonials />
+        </motion.div>
       </div>
-    </div>
+
+      {/* <Footer /> */}
+    </motion.div>
   );
 };
 

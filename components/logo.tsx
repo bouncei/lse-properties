@@ -14,7 +14,7 @@ const Logo = ({ component }: LogoProps) => {
 
   return (
     <Link href="/" className="flex items-center">
-      <div className="relative size-28 md:size-28 mr-2 md:mr-4">
+      <div className="relative size-20 md:size-24 mr-2 md:mr-4">
         <Image
           fill
           alt="logo"

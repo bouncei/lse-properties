@@ -4,89 +4,133 @@ import Logo from "./logo";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import Link from "next/link";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
+import { Input } from "./ui/input";
 
-function Footer() {
+const Footer = () => {
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Implement newsletter signup
+  };
+
   return (
-    <footer className="bg-[#032747] text-white py-8 px-4 md:px-10 xl:px-16  md:py-10 xl:py-16">
-      <div className=" mx-auto sm:px-6 lg:px-8">
-        <div className="grid text-sm grid-cols-1 gap-4 lg:gap-8 md:grid-cols-3 lg:grid-cols-4 pb-8">
-          <div className="w-full lg:col-span-2">
-            <div className="-mt-9 -mb-5">
-              <Logo component="footer" />
-            </div>
-            <div>
-              Our platform is designed to connect individuals in Nigeria with a
-              wide range of service providers. Whether you need home services,
-              graphic design, or any other type of service, our platform
-              simplifies the process of finding and hiring skilled
-              professionals.
-            </div>
-            <div className="flex mt-4">
-              {/* Add appropriate social media icons and links */}
-              <a href="#" className="mr-4">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="mr-4">
-                <i className="fab fa-behance"></i>
-              </a>
-              <a href="#" className="mr-4">
-                <i className="fab fa-twitter"></i>
-              </a>
+    <footer className="bg-gray-900 text-white pt-16 pb-8 px-4 md:px-10 xl:px-16">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {/* Company Info */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Properties by LSE</h3>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-5 h-5" />
+                <p>Apo, Near Fish Market, Abuja, Nigeria</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-5 h-5" />
+                <a href="tel:+2348020860321">+234 802 086 0321</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-5 h-5" />
+                <a href="mailto:info@propertiesbylse.com">
+                  info@propertiesbylse.com
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="w-full ">
-            <h5 className="text-lg font-bold mb-4">Quick Links</h5>
-            <ul className="space-y-1 lg:space-y-2">
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
               <li>
-                <Link href="/about-us" className="hover:underline">
+                <Link href="/about-us" className="hover:text-primary">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/properties" className="hover:underline">
-                  Properties
+                <Link href="/properties" className="hover:text-primary">
+                  Property Listings
                 </Link>
               </li>
               <li>
-                <Link
-                  href="https://wa.me/2348020860321"
-                  target="_blank"
-                  className="hover:underline"
-                >
-                  Contact
+                <Link href="/services" className="hover:text-primary">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">
-                  Privacy Policy
+                <Link href="/contact" className="hover:text-primary">
+                  Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="w-full">
-            <h5 className="text-lg font-bold mb-4">Newsletter</h5>
-            <p>Sign up and receive the latest tips via email.</p>
-            <form className="mt-4">
-              <input
+          {/* Legal */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/privacy-policy" className="hover:text-primary">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/terms-and-conditions"
+                  className="hover:text-primary"
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+            <p className="mb-4">
+              Stay ahead with exclusive real estate tips & deals!
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+              <Input
                 type="email"
-                placeholder="Enter Your Mail"
-                className="w-full px-3 py-2 mb-2 text-gray-900 rounded-md"
+                placeholder="Enter your email"
+                className="bg-gray-800 border-gray-700"
               />
-              <Button type="submit" className="w-full bg-green-700">
+              <Button type="submit" className="w-full">
                 Subscribe Now
-                <Send className="size-5 ml-2" />
               </Button>
             </form>
           </div>
         </div>
-        <div className=" text-center border-t pt-5 text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} All Rights Reserved - LSE Properties
+
+        {/* Social Links */}
+        <div className="flex justify-end gap-4 mb-8">
+          <Link href="https://facebook.com" target="_blank">
+            <Facebook className="w-6 h-6 hover:text-primary" />
+          </Link>
+          <Link href="https://instagram.com" target="_blank">
+            <Instagram className="w-6 h-6 hover:text-primary" />
+          </Link>
+          <Link href="https://linkedin.com" target="_blank">
+            <Linkedin className="w-6 h-6 hover:text-primary" />
+          </Link>
+        </div>
+
+        {/* Copyright */}
+        <div className="text-center text-gray-400 border-t border-gray-800 pt-8">
+          <p>©2025 All Rights Reserved - Properties by LSE</p>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;
