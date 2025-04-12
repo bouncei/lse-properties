@@ -73,7 +73,7 @@ const HowItWorks = () => {
 
       <div className="text-center mt-12">
         <Button asChild size="lg">
-          <Link href="/contact">Start Your Journey</Link>
+          <Link href="/schedule-inspection">Start Your Journey</Link>
         </Button>
       </div>
     </div>

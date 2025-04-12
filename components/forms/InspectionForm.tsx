@@ -28,6 +28,8 @@ import {
   getPropertiesByLocation,
 } from "@/lib/actions/inspection";
 import { toast } from "sonner";
+import { motion, AnimatePresence } from "framer-motion";
+import { fadeInUp, staggerContainer, slideInFromRight } from "@/lib/animations";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -96,158 +98,195 @@ export default function InspectionForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        {/* Name and Email row */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> */}
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Full Name</FormLabel>
-              <FormControl>
-                <Input placeholder="John Doe" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="john@example.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        {/* </div> */}
-
-        {/* Phone Number and Date row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <motion.form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={fadeInUp}>
           <FormField
             control={form.control}
-            name="phoneNumber"
+            name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="+1234567890" {...field} />
+                  <Input placeholder="John Doe" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+        </motion.div>
 
+        <motion.div variants={fadeInUp}>
           <FormField
             control={form.control}
-            name="date"
+            name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Preferred Date</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="date" min={minDate} {...field} />
+                  <Input
+                    type="email"
+                    placeholder="john@example.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-        </div>
+        </motion.div>
 
-        {/* Location and Property row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          variants={staggerContainer}
+        >
+          <motion.div variants={slideInFromRight}>
+            <FormField
+              control={form.control}
+              name="phoneNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone Number</FormLabel>
+                  <FormControl>
+                    <Input placeholder="+1234567890" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </motion.div>
+
+          <motion.div variants={slideInFromRight}>
+            <FormField
+              control={form.control}
+              name="date"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Preferred Date</FormLabel>
+                  <FormControl>
+                    <Input type="date" min={minDate} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          variants={staggerContainer}
+        >
+          <motion.div variants={slideInFromRight}>
+            <FormField
+              control={form.control}
+              name="location"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Location</FormLabel>
+                  <Select
+                    onValueChange={handleLocationChange}
+                    value={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a location" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <AnimatePresence>
+                        {locations.map((location, index) => (
+                          <motion.div
+                            key={location._id}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <SelectItem value={location._id}>
+                              {location.name}
+                            </SelectItem>
+                          </motion.div>
+                        ))}
+                      </AnimatePresence>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </motion.div>
+
+          <motion.div variants={slideInFromRight}>
+            <FormField
+              control={form.control}
+              name="property"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Property</FormLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a property" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <AnimatePresence>
+                        {properties.map((property, index) => (
+                          <motion.div
+                            key={property._id}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <SelectItem value={property._id}>
+                              {property.title}
+                            </SelectItem>
+                          </motion.div>
+                        ))}
+                      </AnimatePresence>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div variants={fadeInUp}>
           <FormField
             control={form.control}
-            name="location"
+            name="enquiry"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Location</FormLabel>
-                <Select
-                  onValueChange={handleLocationChange}
-                  value={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a location" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {locations.map((location) => (
-                      <SelectItem key={location._id} value={location._id}>
-                        {location.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <FormLabel>Additional Information</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Any specific requirements or questions?"
+                    {...field}
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+        </motion.div>
 
-          <FormField
-            control={form.control}
-            name="property"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Property</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value}
-                  disabled={!form.getValues("location")}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue
-                        placeholder={
-                          !form.getValues("location")
-                            ? "Please select a location first"
-                            : "Select a property"
-                        }
-                      />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {properties.map((property) => (
-                      <SelectItem key={property._id} value={property._id}>
-                        {property.title}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        {/* Additional Information */}
-        <FormField
-          control={form.control}
-          name="enquiry"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Additional Information (Optional)</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Any specific requirements or questions..."
-                  className="min-h-[100px]"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Scheduling..." : "Schedule Inspection"}
-        </Button>
-      </form>
+        <motion.div
+          variants={fadeInUp}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? "Scheduling..." : "Schedule Inspection"}
+          </Button>
+        </motion.div>
+      </motion.form>
     </Form>
   );
 }

@@ -5,6 +5,14 @@ import React from "react";
 import WhyChooseUs from "@/components/why-choose-us";
 import { MapPin, Mail, Phone } from "lucide-react";
 import PageWrapper from "@/components/wrappers/page-wrapper";
+import { motion } from "framer-motion";
+import {
+  fadeIn,
+  fadeInUp,
+  staggerContainer,
+  slideIn,
+  slideInFromRight,
+} from "@/lib/animations";
 
 const values = [
   {
@@ -31,111 +39,198 @@ const values = [
 
 const AboutUsPage = () => {
   return (
-    <div className="min-h-screen">
+    <motion.div
+      className="min-h-screen"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
       {/* Hero Section */}
-      <div className="relative h-[40vh] bg-gray-800 flex items-center justify-center">
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      <motion.div
+        className="relative h-[40vh] bg-gray-800 flex items-center justify-center"
+        variants={fadeIn}
+      >
+        <motion.div
+          className="relative z-10 text-center text-white"
+          variants={fadeInUp}
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold mb-4"
+            variants={fadeInUp}
+          >
             About Properties by LSE
-          </h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl max-w-2xl mx-auto"
+            variants={fadeInUp}
+          >
             Your Trusted Partner in Real Estate Excellence
-          </p>
-        </div>
-      </div>
+          </motion.p>
+        </motion.div>
+      </motion.div>
 
       {/* Company Overview */}
       <PageWrapper
         title="Our Story"
         subTitle="Building Dreams, Creating Opportunities"
       >
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-gray-600 mb-8">
+        <motion.div
+          className="container mx-auto px-4"
+          variants={staggerContainer}
+        >
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            variants={fadeInUp}
+          >
+            <motion.p className="text-gray-600 mb-8" variants={slideIn}>
               Properties by LSE is revolutionizing real estate in Abuja, Ibadan
               & Beyond, making property ownership accessible and affordable for
               young people, first-time buyers, and smart investors. Our mission
               is to transform the real estate landscape by providing
               transparent, efficient, and innovative property solutions.
-            </p>
-            <p className="text-gray-600 mb-8">
+            </motion.p>
+            <motion.p className="text-gray-600 mb-8" variants={slideIn}>
               We believe that owning real estate shouldn't be just a dream—it
               should be your reality. Through our commitment to excellence and
               customer satisfaction, we've helped thousands of clients achieve
               their property ownership goals.
-            </p>
-          </div>
-        </div>
+            </motion.p>
+          </motion.div>
+        </motion.div>
       </PageWrapper>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-gray-50">
+      <motion.section className="py-16 bg-gray-50" variants={fadeInUp}>
         <WhyChooseUs />
-      </section>
+      </motion.section>
 
       {/* Our Values */}
       <PageWrapper
         title="Our Values"
         subTitle="The principles that guide our service excellence"
       >
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value) => (
-              <div
+        <motion.div
+          className="container mx-auto px-4"
+          variants={staggerContainer}
+        >
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+          >
+            {values.map((value, index) => (
+              <motion.div
                 key={value.title}
                 className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                variants={fadeInUp}
+                whileHover={{
+                  scale: 1.03,
+                  transition: { duration: 0.2 },
+                }}
+                custom={index}
               >
-                <h3 className="text-xl font-semibold mb-3 text-primary">
+                <motion.h3
+                  className="text-xl font-semibold mb-3 text-primary"
+                  variants={slideInFromRight}
+                >
                   {value.title}
-                </h3>
-                <p className="text-gray-600">{value.description}</p>
-              </div>
+                </motion.h3>
+                <motion.p className="text-gray-600" variants={slideIn}>
+                  {value.description}
+                </motion.p>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </PageWrapper>
 
       {/* Contact Information */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+      <motion.section className="py-16 bg-gray-50" variants={fadeInUp}>
+        <motion.div
+          className="container mx-auto px-4"
+          variants={staggerContainer}
+        >
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
             <p className="text-gray-600">
               We're here to answer any questions you may have
             </p>
-          </div>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm">
-              <MapPin className="w-8 h-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Visit Us</h3>
-              <p className="text-gray-600 text-center">
-                Apo, Near Fish Market, Abuja, Nigeria
-              </p>
-            </div>
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm">
-              <Phone className="w-8 h-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-              <a
-                href="tel:+2348020860321"
-                className="text-gray-600 hover:text-primary"
+          </motion.div>
+          <motion.div
+            className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+          >
+            {[
+              {
+                icon: MapPin,
+                title: "Visit Us",
+                content: "Apo, Near Fish Market, Abuja, Nigeria",
+                link: null,
+              },
+              {
+                icon: Phone,
+                title: "Call Us",
+                content: "+234 802 086 0321",
+                link: "tel:+2348020860321",
+              },
+              {
+                icon: Mail,
+                title: "Email Us",
+                content: "info@propertiesbylse.com",
+                link: "mailto:info@propertiesbylse.com",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm"
+                variants={fadeInUp}
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.2 },
+                }}
+                custom={index}
               >
-                +234 802 086 0321
-              </a>
-            </div>
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm">
-              <Mail className="w-8 h-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-              <a
-                href="mailto:info@propertiesbylse.com"
-                className="text-gray-600 hover:text-primary"
-              >
-                info@propertiesbylse.com
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    delay: index * 0.2,
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                  }}
+                >
+                  <item.icon className="w-8 h-8 text-primary mb-4" />
+                </motion.div>
+                <motion.h3
+                  className="text-lg font-semibold mb-2"
+                  variants={slideInFromRight}
+                >
+                  {item.title}
+                </motion.h3>
+                {item.link ? (
+                  <motion.a
+                    href={item.link}
+                    className="text-gray-600 hover:text-primary"
+                    variants={slideIn}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.content}
+                  </motion.a>
+                ) : (
+                  <motion.p
+                    className="text-gray-600 text-center"
+                    variants={slideIn}
+                  >
+                    {item.content}
+                  </motion.p>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </motion.section>
+    </motion.div>
   );
 };
 

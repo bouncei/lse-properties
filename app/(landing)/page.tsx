@@ -8,45 +8,70 @@ import WhyChooseUs from "@/components/why-choose-us";
 import FeaturedListings from "@/components/featured-listings";
 import HowItWorks from "@/components/how-it-works";
 import Testimonials from "@/components/testimonials";
+import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen flex flex-col relative">
+    <motion.div
+      className="min-h-screen flex flex-col relative"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
       <div className="flex-1 flex flex-col">
         {/* Hero Section */}
-        <div className="h-[90dvh] lg:h-screen px-4 md:px-10 xl:px-16 landing-hero-container">
+        <motion.div
+          className="h-[90dvh] lg:h-screen px-4 md:px-10 xl:px-16 landing-hero-container"
+          variants={fadeInUp}
+        >
           <LandingNav />
           <LandingHero />
-        </div>
+        </motion.div>
 
         {/* Property Search */}
-        <div className="relative -mt-20 z-20 px-4 md:px-10 xl:px-16">
+        <motion.div
+          className="relative -mt-20 z-20 px-4 md:px-10 xl:px-16"
+          variants={fadeInUp}
+        >
           <PropertySearch onSearch={() => {}} />
-        </div>
+        </motion.div>
 
         {/* Featured Listings */}
-        <div className="py-20 px-4 md:px-10 xl:px-16 bg-gray-50">
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16 bg-gray-50"
+          variants={fadeInUp}
+        >
           <FeaturedListings />
-        </div>
+        </motion.div>
 
         {/* Why Choose Us */}
-        <div className="py-20 px-4 md:px-10 xl:px-16">
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16"
+          variants={fadeInUp}
+        >
           <WhyChooseUs />
-        </div>
+        </motion.div>
 
         {/* How It Works */}
-        <div className="py-20 px-4 md:px-10 xl:px-16 bg-gray-50">
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16 bg-gray-50"
+          variants={fadeInUp}
+        >
           <HowItWorks />
-        </div>
+        </motion.div>
 
         {/* Testimonials */}
-        <div className="py-20 px-4 md:px-10 xl:px-16">
+        <motion.div
+          className="py-20 px-4 md:px-10 xl:px-16"
+          variants={fadeInUp}
+        >
           <Testimonials />
-        </div>
+        </motion.div>
       </div>
 
       {/* <Footer /> */}
-    </div>
+    </motion.div>
   );
 };
 
