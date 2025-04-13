@@ -19,7 +19,9 @@ export default function ScheduleInspection() {
     >
       <motion.div className="max-w-2xl mx-auto" variants={staggerContainer}>
         <motion.div className="mb-8 text-center" variants={fadeInUp}>
-          <h1 className="text-3xl font-bold mb-4">Schedule an Inspection</h1>
+          <h1 className="text-center text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent  mb-4">
+            Schedule an Inspection
+          </h1>
           <p className="text-muted-foreground">
             Fill out the form below to schedule a property inspection.
             We&apos;ll get back to you within 24 hours to confirm your

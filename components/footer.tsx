@@ -1,5 +1,5 @@
 // src/components/Footer.js
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./logo";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
@@ -13,11 +13,31 @@ import {
   Phone,
 } from "lucide-react";
 import { Input } from "./ui/input";
+import { subscribeToNewsletter } from "@/lib/actions/newsletter";
+import { toast } from "sonner";
 
 const Footer = () => {
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement newsletter signup
+    setIsLoading(true);
+
+    try {
+      const result = await subscribeToNewsletter(email);
+
+      if (result.success) {
+        toast.success(result.message);
+        setEmail("");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Failed to subscribe. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -82,15 +102,12 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/privacy-policy" className="hover:text-primary">
+                <Link href="/#" className="hover:text-primary">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/terms-and-conditions"
-                  className="hover:text-primary"
-                >
+                <Link href="/#" className="hover:text-primary">
                   Terms & Conditions
                 </Link>
               </li>
@@ -108,9 +125,12 @@ const Footer = () => {
                 type="email"
                 placeholder="Enter your email"
                 className="bg-gray-800 border-gray-700"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
-              <Button type="submit" className="w-full">
-                Subscribe Now
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? "Subscribing..." : "Subscribe Now"}
               </Button>
             </form>
           </div>

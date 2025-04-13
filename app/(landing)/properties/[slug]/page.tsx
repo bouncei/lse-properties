@@ -33,6 +33,8 @@ const PropertyPage = ({ params }: PropertyPageProps) => {
     fetchProperty();
   }, [params.slug]);
 
+  console.log(property);
+
   if (!property) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -95,7 +97,7 @@ const PropertyPage = ({ params }: PropertyPageProps) => {
               <div className="flex items-center gap-2 text-gray-500 mb-2">
                 <MapPin className="w-4 h-4" />
                 <span>
-                  {property.area}, {property.location}
+                  {property.area}, {property.location.name}
                 </span>
               </div>
               <h1 className="text-3xl font-bold mb-4">{property.title}</h1>
@@ -103,7 +105,7 @@ const PropertyPage = ({ params }: PropertyPageProps) => {
                 {formatPrice(property.price)}
               </p>
 
-              <div className="flex items-center gap-6 mb-8">
+              <div className="flex flex-wrap items-center gap-6 mb-8">
                 {property.propertyType !== "land" && (
                   <>
                     <div className="flex items-center gap-2">
@@ -189,8 +191,8 @@ const PropertyPage = ({ params }: PropertyPageProps) => {
               <div className="space-y-4">
                 <Button asChild size="lg" className="w-full">
                   <Link
-                    href="https://linktr.ee/propertiesbylse"
-                    target="_blank"
+                    href={`/schedule-inspection?location=${property.location._id}&property=${property._id}`}
+                    // target="_blank"
                   >
                     <Calendar className="w-5 h-5 mr-2" />
                     Schedule Viewing

@@ -100,6 +100,50 @@ const AboutUsPage = () => {
         </motion.div>
       </PageWrapper>
 
+      {/* CEO Profile Section */}
+      <motion.section className="py-16 bg-white" variants={fadeInUp}>
+        <div className="container mx-auto px-4 md:px-10 xl:px-16">
+          <motion.div
+            className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12"
+            variants={staggerContainer}
+          >
+            <motion.div className="w-full md:w-1/3" variants={fadeIn}>
+              <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
+                <img
+                  src="/images/ceo.jpg"
+                  alt="LSE Properties CEO"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            </motion.div>
+            <motion.div className="w-full md:w-2/3" variants={slideInFromRight}>
+              <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Joseph Emmanuel Inyang
+              </h3>
+              <p className="text-gray-600 mb-4 text-lg">Founder & CEO</p>
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  With over a decade of experience in real estate development
+                  and investment, Joseph Emmanuel Inyang has been at the
+                  forefront of transforming the Nigerian real estate landscape.
+                </p>
+                <p>
+                  His vision of making property ownership accessible to young
+                  professionals and first-time buyers has driven LSE Properties
+                  to become one of the most innovative real estate companies in
+                  Nigeria.
+                </p>
+                <p>
+                  Under his leadership, LSE Properties has successfully
+                  delivered numerous projects and helped thousands of clients
+                  achieve their property ownership dreams.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* Why Choose Us Section */}
       <motion.section
         className="py-16 px-4 md:px-10 xl:px-16 bg-gray-50"

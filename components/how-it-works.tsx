@@ -14,7 +14,7 @@ const steps = [
     icon: Calendar,
     title: "Schedule a Viewing",
     description: "Visit your potential property at a time that suits you.",
-    link: "https://linktr.ee/propertiesbylse",
+    link: "/schedule-inspection",
     color: "bg-green-100 text-green-600",
   },
   {
