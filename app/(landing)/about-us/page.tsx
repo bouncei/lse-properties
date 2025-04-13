@@ -13,6 +13,7 @@ import {
   slideIn,
   slideInFromRight,
 } from "@/lib/animations";
+import OurValues from "@/components/our-values";
 
 const values = [
   {
@@ -108,43 +109,7 @@ const AboutUsPage = () => {
       </motion.section>
 
       {/* Our Values */}
-      <PageWrapper
-        title="Our Values"
-        subTitle="The principles that guide our service excellence"
-      >
-        <motion.div
-          className="container mx-auto px-4 md:px-10 xl:px-16"
-          variants={staggerContainer}
-        >
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={staggerContainer}
-          >
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                variants={fadeInUp}
-                whileHover={{
-                  scale: 1.03,
-                  transition: { duration: 0.2 },
-                }}
-                custom={index}
-              >
-                <motion.h3
-                  className="text-xl font-semibold mb-3 text-primary"
-                  variants={slideInFromRight}
-                >
-                  {value.title}
-                </motion.h3>
-                <motion.p className="text-gray-600" variants={slideIn}>
-                  {value.description}
-                </motion.p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-      </PageWrapper>
+      <OurValues />
 
       {/* Contact Information */}
       <motion.section className="py-16 bg-gray-50" variants={fadeInUp}>
