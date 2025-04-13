@@ -16,7 +16,7 @@ const LandingLayout = ({ children }: { children: React.ReactNode }) => {
         <div
           className={cn(
             "",
-            pathname !== "/" && "pt-24",
+            pathname !== "/" && "pt-16 sm:pt-24",
             pathname === "/" ||
               pathname.includes("/properties/") ||
               pathname.includes("/about-us") ||
