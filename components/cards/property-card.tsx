@@ -38,7 +38,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
           src={urlForImage(property.mainImage)?.url() || defaultImage.url}
           alt={property.title}
           fill
-          className="object-cover"
+          className="object-cover bg-border/30"
         />
         <div className="absolute top-2 right-2">
           <span

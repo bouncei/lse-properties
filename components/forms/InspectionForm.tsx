@@ -30,6 +30,7 @@ import {
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer, slideInFromRight } from "@/lib/animations";
+import { useSearchParams } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -42,6 +43,10 @@ const formSchema = z.object({
 });
 
 export default function InspectionForm() {
+  const searchParams = useSearchParams();
+  const defaultLocation = searchParams.get("location");
+  const defaultProperty = searchParams.get("property");
+
   const [locations, setLocations] = useState<{ _id: string; name: string }[]>(
     []
   );
@@ -56,8 +61,8 @@ export default function InspectionForm() {
       name: "",
       email: "",
       phoneNumber: "",
-      location: "",
-      property: "",
+      location: defaultLocation || "",
+      property: defaultProperty || "",
       date: "",
       enquiry: "",
     },
@@ -67,11 +72,19 @@ export default function InspectionForm() {
     const loadLocations = async () => {
       const locationsData = await getLocations();
       setLocations(locationsData);
+
+      // If there's a default location, load its properties
+      if (defaultLocation) {
+        const propertiesData = await getPropertiesByLocation(defaultLocation);
+        setProperties(propertiesData);
+      }
     };
     loadLocations();
-  }, []);
+  }, [defaultLocation]);
 
   const handleLocationChange = async (locationId: string) => {
+    if (!locationId) return;
+
     form.setValue("location", locationId);
     form.setValue("property", "");
     const propertiesData = await getPropertiesByLocation(locationId);
@@ -192,6 +205,7 @@ export default function InspectionForm() {
                   <Select
                     onValueChange={handleLocationChange}
                     value={field.value}
+                    defaultValue={defaultLocation || undefined}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -228,7 +242,11 @@ export default function InspectionForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Property</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                  <Select
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={defaultProperty || undefined}
+                  >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a property" />

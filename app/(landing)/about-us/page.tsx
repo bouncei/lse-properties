@@ -13,6 +13,8 @@ import {
   slideIn,
   slideInFromRight,
 } from "@/lib/animations";
+import OurValues from "@/components/our-values";
+import Image from "next/image";
 
 const values = [
   {
@@ -46,28 +48,28 @@ const AboutUsPage = () => {
       variants={staggerContainer}
     >
       {/* Hero Section */}
-      <motion.div
-        className="relative h-[40vh] bg-gray-800 flex items-center justify-center"
-        variants={fadeIn}
-      >
-        <motion.div
-          className="relative z-10 text-center text-white"
-          variants={fadeInUp}
-        >
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold mb-4"
-            variants={fadeInUp}
-          >
-            About Properties by LSE
-          </motion.h1>
-          <motion.p
-            className="text-lg md:text-xl max-w-2xl mx-auto"
-            variants={fadeInUp}
-          >
-            Your Trusted Partner in Real Estate Excellence
-          </motion.p>
-        </motion.div>
-      </motion.div>
+      <div className="relative bg-gradient-to-r from-primary/10 to-primary/5 py-24">
+        <div className="container mx-auto px-4 md:px-10 xl:px-16">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h1
+              className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              About Properties by LSE
+            </motion.h1>
+            <motion.p
+              className="text-xl text-gray-600 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Your Trusted Partner in Real Estate Excellence
+            </motion.p>
+          </div>
+        </div>
+      </div>
 
       {/* Company Overview */}
       <PageWrapper
@@ -99,6 +101,50 @@ const AboutUsPage = () => {
         </motion.div>
       </PageWrapper>
 
+      {/* CEO Profile Section */}
+      <motion.section className="py-16 bg-white" variants={fadeInUp}>
+        <div className="container mx-auto px-4 md:px-10 xl:px-16">
+          <motion.div
+            className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12"
+            variants={staggerContainer}
+          >
+            <motion.div className="w-full md:w-1/3" variants={fadeIn}>
+              <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
+                <img
+                  src="/images/ceo.jpg"
+                  alt="LSE Properties CEO"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            </motion.div>
+            <motion.div className="w-full md:w-2/3" variants={slideInFromRight}>
+              <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Joseph Emmanuel Inyang
+              </h3>
+              <p className="text-gray-600 mb-4 text-lg">Founder & CEO</p>
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  With over a decade of experience in real estate development
+                  and investment, Joseph Emmanuel Inyang has been at the
+                  forefront of transforming the Nigerian real estate landscape.
+                </p>
+                <p>
+                  His vision of making property ownership accessible to young
+                  professionals and first-time buyers has driven LSE Properties
+                  to become one of the most innovative real estate companies in
+                  Nigeria.
+                </p>
+                <p>
+                  Under his leadership, LSE Properties has successfully
+                  delivered numerous projects and helped thousands of clients
+                  achieve their property ownership dreams.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* Why Choose Us Section */}
       <motion.section
         className="py-16 px-4 md:px-10 xl:px-16 bg-gray-50"
@@ -108,43 +154,7 @@ const AboutUsPage = () => {
       </motion.section>
 
       {/* Our Values */}
-      <PageWrapper
-        title="Our Values"
-        subTitle="The principles that guide our service excellence"
-      >
-        <motion.div
-          className="container mx-auto px-4 md:px-10 xl:px-16"
-          variants={staggerContainer}
-        >
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={staggerContainer}
-          >
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                variants={fadeInUp}
-                whileHover={{
-                  scale: 1.03,
-                  transition: { duration: 0.2 },
-                }}
-                custom={index}
-              >
-                <motion.h3
-                  className="text-xl font-semibold mb-3 text-primary"
-                  variants={slideInFromRight}
-                >
-                  {value.title}
-                </motion.h3>
-                <motion.p className="text-gray-600" variants={slideIn}>
-                  {value.description}
-                </motion.p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-      </PageWrapper>
+      <OurValues />
 
       {/* Contact Information */}
       <motion.section className="py-16 bg-gray-50" variants={fadeInUp}>

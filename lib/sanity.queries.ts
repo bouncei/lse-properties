@@ -17,7 +17,10 @@ export const propertyQuery = groq`
     title,
     propertyType,
     price,
-    "location": location->name,
+    "location": {
+      "name": location->name,
+      "_id": location->_id
+    },
     area,
     bedrooms,
     bathrooms,
@@ -56,13 +59,13 @@ export const propertiesQuery = groq`
 `;
 
 export const featuredPropertiesQuery = groq`
-  *[_type == "property" && featured == true] | order(_createdAt desc)[0...3] {
+  *[_type == "property" && featured == true && status == "available"] | order(_createdAt desc) {
     _id,
     title,
     slug,
     propertyType,
     price,
-    location,
+    "location": location->name,
     area,
     bedrooms,
     bathrooms,
@@ -70,6 +73,10 @@ export const featuredPropertiesQuery = groq`
     mainImage,
     amenities,
     status,
+    featured,
+    description,
+    features,
+    paymentPlans
   }
 `;
 
@@ -101,5 +108,16 @@ export const teamQuery = groq`
     featured,
     expertise,
     achievements
+  }
+`;
+
+export const featuredTestimonialsQuery = groq`
+  *[_type == "testimonial" && featured == true] {
+    _id,
+    name,
+    role,
+    content,
+    rating,
+    image
   }
 `;

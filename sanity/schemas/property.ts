@@ -173,7 +173,7 @@ export default defineType({
     prepare({ title, media, location, propertyType }) {
       return {
         title,
-        subtitle: `${location} - ${propertyType}`,
+        subtitle: `${propertyType}`,
         media,
       };
     },

@@ -13,7 +13,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   return (
     <div className="my-6 lg:my-10">
       <div className="gap-8 mb-10">
-        <div className="font-medium text-xl lg:text-5xl text-center ">
+        <div className="text-center text-4xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent ">
           {title}
         </div>
         <div className="my-4 text-base lg:text-lg text-center">{subTitle}</div>
