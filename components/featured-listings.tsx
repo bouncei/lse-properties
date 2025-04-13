@@ -10,7 +10,11 @@ import { client } from "@/lib/sanity.client";
 import { useEffect } from "react";
 import PropertyCard from "./cards/property-card";
 
-const FeaturedListings = () => {
+interface FeaturedListingsProps {
+  filteredProperties?: any[];
+}
+
+const FeaturedListings = ({ filteredProperties }: FeaturedListingsProps) => {
   const [featuredProperties, setFeaturedProperties] = useState<any[]>([]);
 
   useEffect(() => {
@@ -40,9 +44,17 @@ const FeaturedListings = () => {
         className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={staggerContainer}
       >
-        {featuredProperties.slice(0, 3).map((property) => (
-          <PropertyCard key={property._id} property={property} />
-        ))}
+        {filteredProperties && filteredProperties.length > 0
+          ? filteredProperties
+              .slice(0, 3)
+              .map((property) => (
+                <PropertyCard key={property._id} property={property} />
+              ))
+          : featuredProperties
+              .slice(0, 3)
+              .map((property) => (
+                <PropertyCard key={property._id} property={property} />
+              ))}
       </motion.div>
 
       <motion.div

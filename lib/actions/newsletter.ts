@@ -1,12 +1,6 @@
 "use server";
 
-import { client } from "@/sanity/lib/client";
-
-// Create a new client with write token
-const writeClient = client.config({
-  token: process.env.NEXT_PUBLIC_SANITY_WRITE_TOKEN,
-  useCdn: false, // We need this for mutations
-});
+import { client, writeClient } from "@/sanity/lib/client";
 
 export async function subscribeToNewsletter(email: string) {
   try {

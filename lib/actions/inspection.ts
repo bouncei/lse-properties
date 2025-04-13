@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import { client, writeClient } from "@/sanity/lib/client";
 
 interface InspectionData {
   name: string;
@@ -9,12 +9,6 @@ interface InspectionData {
   date: string;
   enquiry?: string;
 }
-
-// Create a new client with write token
-const writeClient = client.config({
-  token: process.env.NEXT_PUBLIC_SANITY_WRITE_TOKEN,
-  useCdn: false, // We need this for mutations
-});
 
 export async function createInspection(data: InspectionData) {
   try {
