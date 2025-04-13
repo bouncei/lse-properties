@@ -46,7 +46,6 @@ export default function InspectionForm() {
   const searchParams = useSearchParams();
   const defaultLocation = searchParams.get("location");
   const defaultProperty = searchParams.get("property");
-  console.log(defaultLocation, defaultProperty);
 
   const [locations, setLocations] = useState<{ _id: string; name: string }[]>(
     []

@@ -33,8 +33,6 @@ const PropertyPage = ({ params }: PropertyPageProps) => {
     fetchProperty();
   }, [params.slug]);
 
-  console.log(property);
-
   if (!property) {
     return (
       <div className="min-h-screen flex items-center justify-center">

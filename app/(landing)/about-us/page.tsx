@@ -14,6 +14,7 @@ import {
   slideInFromRight,
 } from "@/lib/animations";
 import OurValues from "@/components/our-values";
+import Image from "next/image";
 
 const values = [
   {

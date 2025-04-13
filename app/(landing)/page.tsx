@@ -100,7 +100,6 @@ const LandingPage = () => {
       );
     }
 
-    console.log(filtered);
     setFilteredProperties(filtered);
   };
 
