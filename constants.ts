@@ -98,64 +98,14 @@ export const landingPageRoutes = [
     href: "/properties",
   },
   {
+    icon: CircleHelp,
+    label: "Services",
+    href: "/services",
+  },
+  {
     icon: HandCoins,
     label: "Schedule Inspection",
     href: "/schedule-inspection",
-  },
-];
-
-export const landingPageSponsors = [
-  {
-    imgPath: "/sponsors/google.svg",
-  },
-  {
-    imgPath: "/sponsors/amazon.svg",
-  },
-  {
-    imgPath: "/sponsors/airbnb.svg",
-  },
-  {
-    imgPath: "/sponsors/spotify.svg",
-  },
-  {
-    imgPath: "/sponsors/intrax.svg",
-  },
-  {
-    imgPath: "/sponsors/noxis.svg",
-  },
-];
-
-export const landingPageServices = [
-  {
-    imgPath: "/icons/scope.svg",
-    title: "Local Focus",
-    text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
-  },
-  {
-    imgPath: "/icons/lock.svg",
-    title: "Local Focus",
-    text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
-  },
-  {
-    imgPath: "/icons/verify.svg",
-    title: "Local Focus",
-    text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
-  },
-  {
-    imgPath: "/icons/users.svg",
-    title: "Local Focus",
-    text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
-  },
-  {
-    imgPath: "/icons/search.svg",
-    title: "Local Focus",
-    text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
-  },
-  {
-    imgPath: "/icons/support.svg",
-
-    title: "Local Focus",
-    text: "Centered for the Nigerian market, the platform supports various local services from home repairs to professional tasks.",
   },
 ];
 

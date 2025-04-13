@@ -65,7 +65,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-primary">
+                <Link
+                  href="https://wa.me/2348020860321"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary"
+                >
                   Contact Us
                 </Link>
               </li>

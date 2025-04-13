@@ -19,7 +19,8 @@ const LandingLayout = ({ children }: { children: React.ReactNode }) => {
             pathname !== "/" && "pt-24",
             pathname === "/" ||
               pathname.includes("/properties/") ||
-              pathname.includes("/about-us")
+              pathname.includes("/about-us") ||
+              pathname.includes("/services")
               ? null
               : "px-4 md:px-10 xl:px-16"
           )}

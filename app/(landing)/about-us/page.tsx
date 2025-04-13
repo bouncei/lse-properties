@@ -46,28 +46,28 @@ const AboutUsPage = () => {
       variants={staggerContainer}
     >
       {/* Hero Section */}
-      <motion.div
-        className="relative h-[40vh] bg-gray-800 flex items-center justify-center"
-        variants={fadeIn}
-      >
-        <motion.div
-          className="relative z-10 text-center text-white"
-          variants={fadeInUp}
-        >
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold mb-4"
-            variants={fadeInUp}
-          >
-            About Properties by LSE
-          </motion.h1>
-          <motion.p
-            className="text-lg md:text-xl max-w-2xl mx-auto"
-            variants={fadeInUp}
-          >
-            Your Trusted Partner in Real Estate Excellence
-          </motion.p>
-        </motion.div>
-      </motion.div>
+      <div className="relative bg-gradient-to-r from-primary/10 to-primary/5 py-24">
+        <div className="container mx-auto px-4 md:px-10 xl:px-16">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h1
+              className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              About Properties by LSE
+            </motion.h1>
+            <motion.p
+              className="text-xl text-gray-600 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Your Trusted Partner in Real Estate Excellence
+            </motion.p>
+          </div>
+        </div>
+      </div>
 
       {/* Company Overview */}
       <PageWrapper
