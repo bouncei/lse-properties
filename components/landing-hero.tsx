@@ -35,32 +35,6 @@ const LandingHero = () => {
                   <Image alt="square_float" src="/hero_square_float.svg" fill />
                 </div>
               </motion.div>
-              {/* <div className="hidden xl:block">
-                <motion.div
-                  className="z-20 absolute -top-3 right-0"
-                  variants={scaleIn}
-                >
-                  <div className="relative size-10 lg:size-20">
-                    <Image
-                      alt="circle_float"
-                      src="/hero_circle_float.svg"
-                      fill
-                    />
-                  </div>
-                </motion.div>
-                <motion.div
-                  className="z-20 absolute -top-8 -right-5"
-                  variants={scaleIn}
-                >
-                  <div className="relative lg:size-20">
-                    <Image
-                      alt="circle_float"
-                      src="/hero_circle_float.svg"
-                      fill
-                    />
-                  </div>
-                </motion.div>
-              </div> */}
             </motion.div>
             <motion.p
               className="text-sm sm:text-base sm:text-center "
@@ -81,14 +55,7 @@ const LandingHero = () => {
               <Button asChild variant="default" size="lg">
                 <Link href="/properties">Own It Now</Link>
               </Button>
-              {/* <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="bg-transparent"
-              >
-                <Link href="/contact">Get Started</Link>
-              </Button> */}
+
               <Button asChild variant="secondary" size="lg">
                 <Link href="/schedule-inspection">Start Your Journey Now</Link>
               </Button>
