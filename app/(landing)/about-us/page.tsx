@@ -110,10 +110,11 @@ const AboutUsPage = () => {
           >
             <motion.div className="w-full md:w-1/3" variants={fadeIn}>
               <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
-                <img
-                  src="/images/ceo.jpg"
+                <Image
+                  src="/images/ceo.webp"
                   alt="LSE Properties CEO"
-                  className="object-cover w-full h-full"
+                  fill
+                  className="object-cover object-top"
                 />
               </div>
             </motion.div>
