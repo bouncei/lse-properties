@@ -142,7 +142,10 @@ const Footer = () => {
             <Link href="https://facebook.com" target="_blank">
               <Facebook className="w-6 h-6 hover:text-primary" />
             </Link>
-            <Link href="https://instagram.com" target="_blank">
+            <Link
+              href="https://www.instagram.com/lsepropertiesng/"
+              target="_blank"
+            >
               <Instagram className="w-6 h-6 hover:text-primary" />
             </Link>
             <Link href="https://linkedin.com" target="_blank">
